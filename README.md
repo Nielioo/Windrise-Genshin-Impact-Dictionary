@@ -1,0 +1,1 @@
+# Windrise-Genshin-Impact-Dictionary
