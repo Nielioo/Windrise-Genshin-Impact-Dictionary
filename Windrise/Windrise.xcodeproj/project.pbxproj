@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F1F283522BF005E46FD /* WindriseApp.swift */; };
+		045C7F22283522BF005E46FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F21283522BF005E46FD /* ContentView.swift */; };
+		045C7F24283522C2005E46FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045C7F23283522C2005E46FD /* Assets.xcassets */; };
+		045C7F27283522C2005E46FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045C7F26283522C2005E46FD /* Preview Assets.xcassets */; };
+		045C7F31283522C2005E46FD /* WindriseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F30283522C2005E46FD /* WindriseTests.swift */; };
+		045C7F3B283522C2005E46FD /* WindriseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F3A283522C2005E46FD /* WindriseUITests.swift */; };
+		045C7F3D283522C2005E46FD /* WindriseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F3C283522C2005E46FD /* WindriseUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		045C7F2D283522C2005E46FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 045C7F14283522BF005E46FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 045C7F1B283522BF005E46FD;
+			remoteInfo = Windrise;
+		};
+		045C7F37283522C2005E46FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 045C7F14283522BF005E46FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 045C7F1B283522BF005E46FD;
+			remoteInfo = Windrise;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		045C7F1C283522BF005E46FD /* Windrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		045C7F1F283522BF005E46FD /* WindriseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseApp.swift; sourceTree = "<group>"; };
+		045C7F21283522BF005E46FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		045C7F23283522C2005E46FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		045C7F26283522C2005E46FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		045C7F2C283522C2005E46FD /* WindriseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindriseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		045C7F30283522C2005E46FD /* WindriseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseTests.swift; sourceTree = "<group>"; };
+		045C7F36283522C2005E46FD /* WindriseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindriseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		045C7F3A283522C2005E46FD /* WindriseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseUITests.swift; sourceTree = "<group>"; };
+		045C7F3C283522C2005E46FD /* WindriseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		045C7F19283522BF005E46FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045C7F29283522C2005E46FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045C7F33283522C2005E46FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		045C7F13283522BF005E46FD = {
+			isa = PBXGroup;
+			children = (
+				045C7F1E283522BF005E46FD /* Windrise */,
+				045C7F2F283522C2005E46FD /* WindriseTests */,
+				045C7F39283522C2005E46FD /* WindriseUITests */,
+				045C7F1D283522BF005E46FD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		045C7F1D283522BF005E46FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F1C283522BF005E46FD /* Windrise.app */,
+				045C7F2C283522C2005E46FD /* WindriseTests.xctest */,
+				045C7F36283522C2005E46FD /* WindriseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		045C7F1E283522BF005E46FD /* Windrise */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F1F283522BF005E46FD /* WindriseApp.swift */,
+				045C7F21283522BF005E46FD /* ContentView.swift */,
+				045C7F23283522C2005E46FD /* Assets.xcassets */,
+				045C7F25283522C2005E46FD /* Preview Content */,
+			);
+			path = Windrise;
+			sourceTree = "<group>";
+		};
+		045C7F25283522C2005E46FD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F26283522C2005E46FD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		045C7F2F283522C2005E46FD /* WindriseTests */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F30283522C2005E46FD /* WindriseTests.swift */,
+			);
+			path = WindriseTests;
+			sourceTree = "<group>";
+		};
+		045C7F39283522C2005E46FD /* WindriseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F3A283522C2005E46FD /* WindriseUITests.swift */,
+				045C7F3C283522C2005E46FD /* WindriseUITestsLaunchTests.swift */,
+			);
+			path = WindriseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		045C7F1B283522BF005E46FD /* Windrise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 045C7F40283522C2005E46FD /* Build configuration list for PBXNativeTarget "Windrise" */;
+			buildPhases = (
+				045C7F18283522BF005E46FD /* Sources */,
+				045C7F19283522BF005E46FD /* Frameworks */,
+				045C7F1A283522BF005E46FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Windrise;
+			productName = Windrise;
+			productReference = 045C7F1C283522BF005E46FD /* Windrise.app */;
+			productType = "com.apple.product-type.application";
+		};
+		045C7F2B283522C2005E46FD /* WindriseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 045C7F43283522C2005E46FD /* Build configuration list for PBXNativeTarget "WindriseTests" */;
+			buildPhases = (
+				045C7F28283522C2005E46FD /* Sources */,
+				045C7F29283522C2005E46FD /* Frameworks */,
+				045C7F2A283522C2005E46FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				045C7F2E283522C2005E46FD /* PBXTargetDependency */,
+			);
+			name = WindriseTests;
+			productName = WindriseTests;
+			productReference = 045C7F2C283522C2005E46FD /* WindriseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		045C7F35283522C2005E46FD /* WindriseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 045C7F46283522C2005E46FD /* Build configuration list for PBXNativeTarget "WindriseUITests" */;
+			buildPhases = (
+				045C7F32283522C2005E46FD /* Sources */,
+				045C7F33283522C2005E46FD /* Frameworks */,
+				045C7F34283522C2005E46FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				045C7F38283522C2005E46FD /* PBXTargetDependency */,
+			);
+			name = WindriseUITests;
+			productName = WindriseUITests;
+			productReference = 045C7F36283522C2005E46FD /* WindriseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		045C7F14283522BF005E46FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					045C7F1B283522BF005E46FD = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					045C7F2B283522C2005E46FD = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 045C7F1B283522BF005E46FD;
+					};
+					045C7F35283522C2005E46FD = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 045C7F1B283522BF005E46FD;
+					};
+				};
+			};
+			buildConfigurationList = 045C7F17283522BF005E46FD /* Build configuration list for PBXProject "Windrise" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 045C7F13283522BF005E46FD;
+			productRefGroup = 045C7F1D283522BF005E46FD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				045C7F1B283522BF005E46FD /* Windrise */,
+				045C7F2B283522C2005E46FD /* WindriseTests */,
+				045C7F35283522C2005E46FD /* WindriseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		045C7F1A283522BF005E46FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045C7F27283522C2005E46FD /* Preview Assets.xcassets in Resources */,
+				045C7F24283522C2005E46FD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045C7F2A283522C2005E46FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045C7F34283522C2005E46FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		045C7F18283522BF005E46FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045C7F22283522BF005E46FD /* ContentView.swift in Sources */,
+				045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045C7F28283522C2005E46FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045C7F31283522C2005E46FD /* WindriseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045C7F32283522C2005E46FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045C7F3D283522C2005E46FD /* WindriseUITestsLaunchTests.swift in Sources */,
+				045C7F3B283522C2005E46FD /* WindriseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		045C7F2E283522C2005E46FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 045C7F1B283522BF005E46FD /* Windrise */;
+			targetProxy = 045C7F2D283522C2005E46FD /* PBXContainerItemProxy */;
+		};
+		045C7F38283522C2005E46FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 045C7F1B283522BF005E46FD /* Windrise */;
+			targetProxy = 045C7F37283522C2005E46FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		045C7F3E283522C2005E46FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		045C7F3F283522C2005E46FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		045C7F41283522C2005E46FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Windrise/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fei.Windrise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		045C7F42283522C2005E46FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Windrise/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fei.Windrise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		045C7F44283522C2005E46FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fei.WindriseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Windrise.app/Windrise";
+			};
+			name = Debug;
+		};
+		045C7F45283522C2005E46FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fei.WindriseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Windrise.app/Windrise";
+			};
+			name = Release;
+		};
+		045C7F47283522C2005E46FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fei.WindriseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Windrise;
+			};
+			name = Debug;
+		};
+		045C7F48283522C2005E46FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fei.WindriseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Windrise;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		045C7F17283522BF005E46FD /* Build configuration list for PBXProject "Windrise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045C7F3E283522C2005E46FD /* Debug */,
+				045C7F3F283522C2005E46FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		045C7F40283522C2005E46FD /* Build configuration list for PBXNativeTarget "Windrise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045C7F41283522C2005E46FD /* Debug */,
+				045C7F42283522C2005E46FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		045C7F43283522C2005E46FD /* Build configuration list for PBXNativeTarget "WindriseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045C7F44283522C2005E46FD /* Debug */,
+				045C7F45283522C2005E46FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		045C7F46283522C2005E46FD /* Build configuration list for PBXNativeTarget "WindriseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045C7F47283522C2005E46FD /* Debug */,
+				045C7F48283522C2005E46FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 045C7F14283522BF005E46FD /* Project object */;
+}
