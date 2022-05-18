@@ -14,6 +14,10 @@
 		045C7F31283522C2005E46FD /* WindriseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F30283522C2005E46FD /* WindriseTests.swift */; };
 		045C7F3B283522C2005E46FD /* WindriseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F3A283522C2005E46FD /* WindriseUITests.swift */; };
 		045C7F3D283522C2005E46FD /* WindriseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F3C283522C2005E46FD /* WindriseUITestsLaunchTests.swift */; };
+		045C7F4B283523D4005E46FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F4A283523D4005E46FD /* Data.swift */; };
+		045C7F4E2835245B005E46FD /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F4D2835245B005E46FD /* Character.swift */; };
+		045C7F5128352A72005E46FD /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F5028352A72005E46FD /* CharacterList.swift */; };
+		045C7F5428352AAF005E46FD /* CharacterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F5328352AAF005E46FD /* CharacterDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		045C7F36283522C2005E46FD /* WindriseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindriseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		045C7F3A283522C2005E46FD /* WindriseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseUITests.swift; sourceTree = "<group>"; };
 		045C7F3C283522C2005E46FD /* WindriseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		045C7F4A283523D4005E46FD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		045C7F4D2835245B005E46FD /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		045C7F5028352A72005E46FD /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
+		045C7F5328352AAF005E46FD /* CharacterDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				045C7F1F283522BF005E46FD /* WindriseApp.swift */,
-				045C7F21283522BF005E46FD /* ContentView.swift */,
+				045C7F4F28352A48005E46FD /* View */,
+				045C7F4C28352446005E46FD /* Model */,
+				045C7F49283523B5005E46FD /* Resources */,
 				045C7F23283522C2005E46FD /* Assets.xcassets */,
 				045C7F25283522C2005E46FD /* Preview Content */,
 			);
@@ -125,6 +135,40 @@
 				045C7F3C283522C2005E46FD /* WindriseUITestsLaunchTests.swift */,
 			);
 			path = WindriseUITests;
+			sourceTree = "<group>";
+		};
+		045C7F49283523B5005E46FD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F4A283523D4005E46FD /* Data.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		045C7F4C28352446005E46FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F4D2835245B005E46FD /* Character.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		045C7F4F28352A48005E46FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F21283522BF005E46FD /* ContentView.swift */,
+				045C7F5228352A78005E46FD /* Character */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		045C7F5228352A78005E46FD /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F5028352A72005E46FD /* CharacterList.swift */,
+				045C7F5328352AAF005E46FD /* CharacterDescription.swift */,
+			);
+			path = Character;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				045C7F22283522BF005E46FD /* ContentView.swift in Sources */,
+				045C7F4B283523D4005E46FD /* Data.swift in Sources */,
+				045C7F5128352A72005E46FD /* CharacterList.swift in Sources */,
 				045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */,
+				045C7F5428352AAF005E46FD /* CharacterDescription.swift in Sources */,
+				045C7F4E2835245B005E46FD /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
