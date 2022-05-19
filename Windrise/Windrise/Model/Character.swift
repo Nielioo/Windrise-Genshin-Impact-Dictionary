@@ -15,10 +15,10 @@ struct Character: Codable, Identifiable {
     var weapon: String = ""
     var nation: String = ""
     var affiliation: String = ""
-    var rarity: Int=0
+    var rarity: Int = 0
     var constellation: String = ""
     var birthday: String = ""
-    var welcomeDescription: String = ""
+    var description: String = ""
     var skillTalents: [Constellation] = []
     var passiveTalents: [Constellation] = []
     var constellations: [Constellation] = []
@@ -27,7 +27,7 @@ struct Character: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case name, vision, weapon, nation, affiliation, rarity, constellation, birthday
-        case welcomeDescription = "description"
+        case description = "description"
         case skillTalents, passiveTalents, constellations
         case visionKey = "vision_key"
         case weaponType = "weapon_type"
@@ -39,13 +39,13 @@ struct Constellation: Codable, Identifiable {
     let id = UUID()
     var name: String = ""
     var unlock: String = ""
-    var constellationDescription: String = ""
+    var description: String = ""
     var level: Int? = 0
     var type: String? = ""
     
     enum CodingKeys: String, CodingKey {
         case name, unlock
-        case constellationDescription = "description"
+        case description = "description"
         case level, type
     }
 }
