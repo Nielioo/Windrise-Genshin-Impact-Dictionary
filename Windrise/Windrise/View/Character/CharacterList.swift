@@ -15,7 +15,7 @@ struct CharacterList: View {
         NavigationView {
             List(characters, id: \.self) { character in
                 NavigationLink{
-                    CharacterDescription()
+                    CharacterDescription(currentCharacter: Character(name: character))
                 } label: {
                     Text(character)
                 }

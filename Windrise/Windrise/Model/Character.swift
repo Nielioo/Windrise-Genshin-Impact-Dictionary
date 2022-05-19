@@ -19,8 +19,8 @@ struct Character: Codable, Identifiable {
     var constellation: String = ""
     var birthday: String = ""
     var welcomeDescription: String = ""
-    var skillTalents: String = ""
-    var passiveTalents: String = ""
+    var skillTalents: [Constellation] = []
+    var passiveTalents: [Constellation] = []
     var constellations: [Constellation] = []
     var visionKey: String = ""
     var weaponType: String = ""
