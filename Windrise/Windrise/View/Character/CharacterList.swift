@@ -12,13 +12,21 @@ struct CharacterList: View {
     @State var characters: [String] = []
     
     var body: some View {
-        List(characters, id: \.self) { character in
-            Text(character)
-        }.onAppear{
-            Api().getCharacters { (characters) in
-                self.characters = characters
+        NavigationView {
+            List(characters, id: \.self) { character in
+                NavigationLink{
+                    CharacterDescription()
+                } label: {
+                    Text(character)
+                }
+            }.onAppear{
+                Api().getCharacters { (characters) in
+                    self.characters = characters
+                }
             }
+            .navigationTitle("Character List")
         }
+        
     }
 }
 
