@@ -27,7 +27,7 @@ struct CharacterDescription: View {
                 
                 ZStack(alignment: .bottomTrailing){
                     // MARK: - Gacha Splash
-                    VStack{
+                    VStack(alignment: .center){
                         currentCharacterGachaSplash
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -84,7 +84,11 @@ struct CharacterDescription: View {
                                     .padding(.bottom,0.5)
                                 Text(currentCharacter.weapon)
                                     .padding(.bottom,0.5)
-                                Text(dateProcess(rawDate: currentCharacter.birthday))
+                                if(currentCharacter.birthday != nil){
+                                    Text(dateProcess(rawDate: currentCharacter.birthday ?? "Unknown"))
+                                } else {
+                                    Text("Unknown")
+                                }
                             }
                             .padding(.horizontal, 12.0)
                         }
@@ -133,13 +137,67 @@ struct CharacterDescription: View {
                             .background(Color(hue: 0.0, saturation: 0.0, brightness: 0.0, opacity: 0.3))
                             .cornerRadius(8.0)
                             
-                            //                            ForEach(currentCharacter.skillTalents){ skill in
-                            //                                VStack{
-                            //                                    Text(skill.name)
-                            //                                    Text(skill.unlock)
-                            //                                    Text(skill.description)
-                            //                                }
-                            //                            }
+                            if(!currentCharacter.skillTalents.isEmpty){
+                                switch(talentSelection){
+                                case "Basic":
+                                    let basic = currentCharacter.skillTalents[0]
+                                    let basicSplit = basic.description.split(separator: "\n")
+                                    
+                                    Text(basic.name)
+                                    VStack{
+                                        ForEach(basicSplit.indices, id: \.self){ index in
+                                            if(index % 2 == 0){
+                                                Text(basicSplit[index])
+                                                    .font(.title)
+                                            } else {
+                                                Text(basicSplit[index])
+                                                    .font(.caption)
+                                                    .padding(.bottom, 10)
+                                            }
+                                        }
+                                    }
+                                    
+                                case "Skill":
+                                    let skill = currentCharacter.skillTalents[1]
+                                    let skillSplit = skill.description.split(separator: "\n")
+                                    
+                                    Text(skill.name)
+                                    VStack{
+                                        ForEach(skillSplit.indices, id: \.self){ index in
+                                            if(index % 2 == 0){
+                                                Text(skillSplit[index])
+                                                    .font(.title)
+                                            } else {
+                                                Text(skillSplit[index])
+                                                    .font(.caption)
+                                                    .padding(.bottom, 10)
+                                            }
+                                        }
+                                    }
+                                    
+                                case "Burst":
+                                    let burst = currentCharacter.skillTalents[2]
+                                    let burstSplit = burst.description.split(separator: "\n")
+                                    
+                                    Text(burst.name)
+                                    VStack{
+                                        ForEach(burstSplit.indices, id: \.self){ index in
+                                            if(index % 2 == 0){
+                                                Text(burstSplit[index])
+                                                    .font(.title)
+                                            } else {
+                                                Text(burstSplit[index])
+                                                    .font(.caption)
+                                                    .padding(.bottom, 10)
+                                            }
+                                        }
+                                    }
+                                    
+                                default:
+                                    Text("No Data")
+                                }
+                                
+                            }
                         }
                         .padding()
                     }
@@ -173,14 +231,14 @@ struct CharacterDescription: View {
                     // MARK: - Api Settings
                     Api().getCharacter(currentCharacterName: currentCharacter.name) { character in
                         self.currentCharacter = character
+                        
+                        Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey.lowercased()) { image in
+                            self.currentCharacterElementIcon = image
+                        }
                     }
                     
                     Api().getCharacterGachaSplash(currentCharacterName: currentCharacter.name) { image in
                         self.currentCharacterGachaSplash = image
-                    }
-                    
-                    Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey.lowercased()) { image in
-                        self.currentCharacterElementIcon = image
                     }
                     
                     // MARK: - Segmented Picker Settings
@@ -213,6 +271,6 @@ func dateProcess(rawDate: String) -> String{
 
 struct CharacterDescription_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDescription(currentCharacter: Character(name: "albedo"))
+        CharacterDescription(currentCharacter: Character(name: "aloy"))
     }
 }
