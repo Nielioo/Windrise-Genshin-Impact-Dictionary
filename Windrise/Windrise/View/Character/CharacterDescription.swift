@@ -9,14 +9,20 @@ import SwiftUI
 
 struct CharacterDescription: View {
     
+    //TODO: - element icon, tab selection
+    
     @State var currentCharacter: Character
     @State var currentCharacterGachaSplash: Image = Image("characterDummy")
     @State var currentCharacterElementIcon: Image = Image("cryoElement")
+    @State private var talentSelection: String = "Basic"
+    
+    let talentSelections:[String] = ["Basic","Skill","Burst"]
     
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("BackgroundDarkBlue"), Color("BackgroundDarkPurple")]), startPoint: .topLeading, endPoint: .bottomLeading)
                 .ignoresSafeArea()
+            
             ScrollView {
                 
                 ZStack(alignment: .bottomTrailing){
@@ -88,21 +94,60 @@ struct CharacterDescription: View {
                     .foregroundColor(.white)
                     .background(.ultraThinMaterial)
                     .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                    .padding(.vertical, 4.0)
                     
+                    // MARK: - Description
                     VStack{
-                        Text(currentCharacter.description)
-                    }
-                    
-                    
-                    VStack{
-                        ForEach(currentCharacter.skillTalents){ skill in
-                            VStack{
-                                Text(skill.name)
-                                Text(skill.description)
-                                //Text(skill.type ?? "")
-                            }
+                        VStack{
+                            Text("Description")
+                                .fontWeight(.heavy)
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom,0.5)
+                            Text(currentCharacter.description)
+                                .font(.system(size: 14))
+                            
+                            
                         }
+                        .padding()
                     }
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                    .padding(.vertical, 4.0)
+                    
+                    // MARK: - Skill Talents
+                    VStack{
+                        VStack{
+                            Text("Talents")
+                                .fontWeight(.heavy)
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom,0.5)
+                            
+                            Picker("Tip Percentage", selection: $talentSelection){
+                                ForEach(talentSelections, id: \.self){selection in
+                                    Text(selection)
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                            .background(Color(hue: 0.0, saturation: 0.0, brightness: 0.0, opacity: 0.3))
+                            .cornerRadius(8.0)
+                            
+                            //                            ForEach(currentCharacter.skillTalents){ skill in
+                            //                                VStack{
+                            //                                    Text(skill.name)
+                            //                                    Text(skill.unlock)
+                            //                                    Text(skill.description)
+                            //                                }
+                            //                            }
+                        }
+                        .padding()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                    .padding(.vertical, 4.0)
                     
                     VStack{
                         ForEach(currentCharacter.passiveTalents){ passive in
@@ -124,8 +169,8 @@ struct CharacterDescription: View {
                 }
                 .padding(.horizontal, 12.0)
                 .padding(.vertical, 8.0)
-                // MARK: - Api Settings
                 .onAppear{
+                    // MARK: - Api Settings
                     Api().getCharacter(currentCharacterName: currentCharacter.name) { character in
                         self.currentCharacter = character
                     }
@@ -134,9 +179,15 @@ struct CharacterDescription: View {
                         self.currentCharacterGachaSplash = image
                     }
                     
-                    Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey, completion: { image in
+                    Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey.lowercased()) { image in
                         self.currentCharacterElementIcon = image
-                    })
+                    }
+                    
+                    // MARK: - Segmented Picker Settings
+                    UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.white
+                    UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
+                    UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+                    
                 }
             }
         }
