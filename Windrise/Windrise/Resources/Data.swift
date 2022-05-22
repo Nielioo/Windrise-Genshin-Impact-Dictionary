@@ -54,8 +54,8 @@ class Api{
         .resume()
     }
     
-    func getCharacterElementIcon(currentCharacter: Character, completion: @escaping (Image) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/element/\(currentCharacter.visionKey.lowercased())/icon") else { return }
+    func getCharacterElementIcon(currentCharacterVisionKey: String, completion: @escaping (Image) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/element/\(currentCharacterVisionKey.lowercased())/icon") else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             

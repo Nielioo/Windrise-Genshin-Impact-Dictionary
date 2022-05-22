@@ -134,9 +134,9 @@ struct CharacterDescription: View {
                         self.currentCharacterGachaSplash = image
                     }
                     
-                    Api().getCharacterElementIcon(currentCharacter: currentCharacter) { image in
+                    Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey, completion: { image in
                         self.currentCharacterElementIcon = image
-                    }
+                    })
                 }
             }
         }
