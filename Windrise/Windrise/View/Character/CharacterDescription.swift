@@ -58,15 +58,19 @@ struct CharacterDescription: View {
                         HStack{
                             VStack(alignment: .leading){
                                 Text("Vision")
+                                    .font(.system(size: 16))
                                     .fontWeight(.bold)
                                     .padding(.bottom,0.5)
                                 Text("Nation")
+                                    .font(.system(size: 16))
                                     .fontWeight(.bold)
                                     .padding(.bottom,0.5)
                                 Text("Weapon")
+                                    .font(.system(size: 16))
                                     .fontWeight(.bold)
                                     .padding(.bottom,0.5)
                                 Text("Birthday")
+                                    .font(.system(size: 16))
                                     .fontWeight(.bold)
                             }
                             VStack(alignment: .leading){
@@ -78,14 +82,18 @@ struct CharacterDescription: View {
                                     }
                                     .frame(height: 20.0)
                                     Text(currentCharacter.vision)
+                                        .font(.system(size: 16))
                                         .padding(.bottom,0.5)
                                 }
                                 Text(currentCharacter.nation)
+                                    .font(.system(size: 16))
                                     .padding(.bottom,0.5)
                                 Text(currentCharacter.weapon)
+                                    .font(.system(size: 16))
                                     .padding(.bottom,0.5)
                                 if(currentCharacter.birthday != nil){
                                     Text(dateProcess(rawDate: currentCharacter.birthday ?? "Unknown"))
+                                        .font(.system(size: 16))
                                 } else {
                                     Text("Unknown")
                                 }
@@ -104,12 +112,12 @@ struct CharacterDescription: View {
                     VStack{
                         VStack{
                             Text("Description")
+                                .font(.system(size: 18))
                                 .fontWeight(.heavy)
                                 .multilineTextAlignment(.center)
-                                .padding(.bottom,0.5)
+                                .padding(.bottom, 4)
                             Text(currentCharacter.description)
-                                .font(.system(size: 14))
-                            
+                                .font(.caption)
                             
                         }
                         .padding()
@@ -120,17 +128,19 @@ struct CharacterDescription: View {
                     .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                     .padding(.vertical, 4.0)
                     
-                    // MARK: - Skill Talents
+                    // MARK: - Talents
                     VStack{
                         VStack{
                             Text("Talents")
+                                .font(.system(size: 18))
                                 .fontWeight(.heavy)
                                 .multilineTextAlignment(.center)
-                                .padding(.bottom,0.5)
+                                .padding(.bottom, 4)
                             
-                            Picker("Tip Percentage", selection: $talentSelection){
+                            Picker("Talents Picker", selection: $talentSelection){
                                 ForEach(talentSelections, id: \.self){selection in
                                     Text(selection)
+                                        .font(.system(size: 20))
                                 }
                             }
                             .pickerStyle(SegmentedPickerStyle())
@@ -144,11 +154,15 @@ struct CharacterDescription: View {
                                     let basicSplit = basic.description.split(separator: "\n")
                                     
                                     Text(basic.name)
-                                    VStack{
+                                        .fontWeight(.semibold)
+                                        .multilineTextAlignment(.center)
+                                        .padding(.vertical, 8)
+                                    VStack(alignment: .leading){
                                         ForEach(basicSplit.indices, id: \.self){ index in
                                             if(index % 2 == 0){
                                                 Text(basicSplit[index])
-                                                    .font(.title)
+                                                    .font(.subheadline)
+                                                    .fontWeight(.semibold)
                                             } else {
                                                 Text(basicSplit[index])
                                                     .font(.caption)
@@ -159,44 +173,36 @@ struct CharacterDescription: View {
                                     
                                 case "Skill":
                                     let skill = currentCharacter.skillTalents[1]
-                                    let skillSplit = skill.description.split(separator: "\n")
                                     
                                     Text(skill.name)
-                                    VStack{
-                                        ForEach(skillSplit.indices, id: \.self){ index in
-                                            if(index % 2 == 0){
-                                                Text(skillSplit[index])
-                                                    .font(.title)
-                                            } else {
-                                                Text(skillSplit[index])
-                                                    .font(.caption)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                    }
+                                        .fontWeight(.semibold)
+                                        .multilineTextAlignment(.center)
+                                        .padding(.vertical, 8)
+                                    Text(skill.description)
+                                        .font(.caption)
+                                        .padding(.bottom, 10)
                                     
                                 case "Burst":
                                     let burst = currentCharacter.skillTalents[2]
-                                    let burstSplit = burst.description.split(separator: "\n")
                                     
                                     Text(burst.name)
-                                    VStack{
-                                        ForEach(burstSplit.indices, id: \.self){ index in
-                                            if(index % 2 == 0){
-                                                Text(burstSplit[index])
-                                                    .font(.title)
-                                            } else {
-                                                Text(burstSplit[index])
-                                                    .font(.caption)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                    }
+                                        .fontWeight(.semibold)
+                                        .multilineTextAlignment(.center)
+                                        .padding(.vertical, 8)
+                                    Text(burst.description)
+                                        .font(.caption)
+                                        .padding(.bottom, 10)
                                     
                                 default:
                                     Text("No Data")
+                                        .font(.caption)
+                                        .padding(.vertical, 10)
                                 }
                                 
+                            } else {
+                                Text("No Data")
+                                    .font(.caption)
+                                    .padding(.vertical, 10)
                             }
                         }
                         .padding()
@@ -207,14 +213,47 @@ struct CharacterDescription: View {
                     .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                     .padding(.vertical, 4.0)
                     
+                    // MARK: - Passive
                     VStack{
-                        ForEach(currentCharacter.passiveTalents){ passive in
-                            VStack{
-                                Text(passive.name)
-                                Text(passive.description)
+                        VStack{
+                            Text("Passive")
+                                .font(.system(size: 18))
+                                .fontWeight(.heavy)
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom, 4)
+                            
+                            if(!currentCharacter.passiveTalents.isEmpty){
+                                VStack(alignment: .leading){
+                                    ForEach(currentCharacter.passiveTalents.indices, id: \.self){ index in
+                                        let passive = currentCharacter.passiveTalents[index]
+                                        
+                                        Text(passive.name)
+                                            .font(.subheadline)
+                                            .fontWeight(.bold)
+                                            .padding(.top, 2)
+                                        Text(passive.unlock)
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .padding(.bottom, 10)
+                                        Text(passive.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                }
+                            } else {
+                                Text("No Data")
+                                    .font(.caption)
+                                    .padding(.vertical, 10)
                             }
+                            
                         }
+                        .padding()
                     }
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                    .padding(.vertical, 4.0)
                     
                     VStack{
                         ForEach(currentCharacter.constellations){ cons in
@@ -271,6 +310,6 @@ func dateProcess(rawDate: String) -> String{
 
 struct CharacterDescription_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDescription(currentCharacter: Character(name: "aloy"))
+        CharacterDescription(currentCharacter: Character(name: "ayaka"))
     }
 }
