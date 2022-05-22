@@ -25,6 +25,10 @@ struct CharacterDescription: View {
     var constellationActive: Image = Image("ascensionActive")
     var constellationInactive: Image = Image("ascensionInactive")
     
+    func rarityState(for number:Int) -> Image{
+        return star
+    }
+    
     func constellationState(for number:Int) -> Image{
         if number > constellationStar{
             return constellationInactive ?? constellationActive
@@ -55,8 +59,15 @@ struct CharacterDescription: View {
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .padding(.top, 12)
-                            Text(currentCharacter.rarity.description)
-                                .padding(.bottom, 12)
+                                .padding(.bottom, 2)
+                            
+                            HStack(alignment: .bottom){
+                                ForEach(1..<currentCharacter.rarity+1, id: \.self){ number in
+                                    rarityState(for: number)
+                                        .foregroundColor(Color.yellow)
+                                }
+                            }
+                            .padding(.bottom, 10)
                         }
                         .frame(maxWidth: .infinity)
                         .foregroundColor(.white)
