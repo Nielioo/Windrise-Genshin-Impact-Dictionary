@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CharacterDescription: View {
     
-    //TODO: - element icon, tab selection
-    
     @State var currentCharacter: Character
     @State var currentCharacterGachaSplash: Image = Image("characterDummy")
     @State var currentCharacterElementIcon: Image = Image("cryoElement")
@@ -31,7 +29,7 @@ struct CharacterDescription: View {
     
     func constellationState(for number:Int) -> Image{
         if number > constellationStar{
-            return constellationInactive ?? constellationActive
+            return constellationInactive 
         } else {
             return constellationActive
         }
@@ -142,8 +140,14 @@ struct CharacterDescription: View {
                                 .fontWeight(.heavy)
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom, 4)
+                            
                             Text(currentCharacter.description)
                                 .font(.caption)
+                            if(currentCharacter.description == ""){
+                                Text("No Data")
+                                    .font(.caption)
+                                    .padding(.vertical, 10)
+                            }
                             
                         }
                         .padding()
