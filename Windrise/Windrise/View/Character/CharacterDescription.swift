@@ -15,8 +15,23 @@ struct CharacterDescription: View {
     @State var currentCharacterGachaSplash: Image = Image("characterDummy")
     @State var currentCharacterElementIcon: Image = Image("cryoElement")
     @State private var talentSelection: String = "Basic"
+    @State var constellationStar: Int = 1
     
     let talentSelections:[String] = ["Basic","Skill","Burst"]
+    
+    var star:Image = Image(systemName: "star.fill")
+    
+    var maximumConstellation: Int = 6
+    var constellationActive: Image = Image("ascensionActive")
+    var constellationInactive: Image = Image("ascensionInactive")
+    
+    func constellationState(for number:Int) -> Image{
+        if number > constellationStar{
+            return constellationInactive ?? constellationActive
+        } else {
+            return constellationActive
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -112,7 +127,7 @@ struct CharacterDescription: View {
                     VStack{
                         VStack{
                             Text("Description")
-                                .font(.system(size: 18))
+                                .font(.system(size: 20))
                                 .fontWeight(.heavy)
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom, 4)
@@ -132,7 +147,7 @@ struct CharacterDescription: View {
                     VStack{
                         VStack{
                             Text("Talents")
-                                .font(.system(size: 18))
+                                .font(.system(size: 20))
                                 .fontWeight(.heavy)
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom, 4)
@@ -217,7 +232,7 @@ struct CharacterDescription: View {
                     VStack{
                         VStack{
                             Text("Passive")
-                                .font(.system(size: 18))
+                                .font(.system(size: 20))
                                 .fontWeight(.heavy)
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom, 4)
@@ -255,13 +270,136 @@ struct CharacterDescription: View {
                     .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                     .padding(.vertical, 4.0)
                     
-                    VStack{
-                        ForEach(currentCharacter.constellations){ cons in
-                            Text(cons.level?.description ?? "0")
-                            Text(cons.name)
-                            Text(cons.description)
+                    //MARK: - Constellations
+                    VStack {
+                        VStack{
+                            Text("Constellation")
+                                .font(.system(size: 20))
+                                .fontWeight(.heavy)
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom, 4)
+                            HStack{
+                                ForEach(1..<maximumConstellation+1, id: \.self){ number in
+                                    constellationState(for: number)
+                                        .onTapGesture {
+                                            constellationStar = number
+                                        }
+                                }
+                            }.padding(.vertical, 12)
+                            
+                            if(!currentCharacter.constellations.isEmpty){
+                                switch(constellationStar){
+                                case 1:
+                                    let cons = currentCharacter.constellations[0]
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(cons.name)
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .padding(.top, 2)
+                                        Text(cons.unlock)
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .padding(.bottom, 10)
+                                        Text(cons.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                case 2:
+                                    let cons = currentCharacter.constellations[1]
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(cons.name)
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .padding(.top, 2)
+                                        Text(cons.unlock)
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .padding(.bottom, 10)
+                                        Text(cons.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                case 3:
+                                    let cons = currentCharacter.constellations[2]
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(cons.name)
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .padding(.top, 2)
+                                        Text(cons.unlock)
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .padding(.bottom, 10)
+                                        Text(cons.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                case 4:
+                                    let cons = currentCharacter.constellations[3]
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(cons.name)
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .padding(.top, 2)
+                                        Text(cons.unlock)
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .padding(.bottom, 10)
+                                        Text(cons.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                case 5:
+                                    let cons = currentCharacter.constellations[4]
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(cons.name)
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .padding(.top, 2)
+                                        Text(cons.unlock)
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .padding(.bottom, 10)
+                                        Text(cons.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                case 6:
+                                    let cons = currentCharacter.constellations[5]
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(cons.name)
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .padding(.top, 2)
+                                        Text(cons.unlock)
+                                            .font(.caption)
+                                            .fontWeight(.semibold)
+                                            .padding(.bottom, 10)
+                                        Text(cons.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                default:
+                                    Text("No Data")
+                                        .font(.caption)
+                                        .padding(.vertical, 10)
+                                }
+                                
+                            }
                         }
+                        .padding()
                     }
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                    .padding(.vertical, 4.0)
                     
                 }
                 .padding(.horizontal, 12.0)
