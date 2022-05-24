@@ -9,22 +9,41 @@ import SwiftUI
 
 struct CharacterList: View {
     
-    @State var characters: [String] = []
+    @State var characters: [Character] = []
+    @State var charactersName: [String] = []
+    
+    private var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     var body: some View {
         NavigationView {
-            List(characters, id: \.self) { character in
-                NavigationLink{
-                    CharacterDescription(currentCharacter: Character(name: character))
-                } label: {
-                    Text(character)
+            
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [Color("BackgroundDarkBlue"), Color("BackgroundDarkPurple")]), startPoint: .topLeading, endPoint: .bottomLeading)
+                    .ignoresSafeArea()
+                
+                ScrollView(showsIndicators: false){
+                    LazyVGrid(columns: columns){
+                        ForEach(characters.indices, id: \.self){ index in
+                            NavigationLink(destination: CharacterDescription(currentCharacter: characters[index], currentCharacterName: charactersName[index])){
+                                CharacterCard(currentCharacter: characters[index], currentCharacterName: charactersName[index])
+                            }
+                            .tag(characters[index].name)
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                    .padding()
+                }.onAppear{
+                    Api().getCharactersName { arrayOfCharactersName in
+                        self.charactersName = arrayOfCharactersName
+                    }
+                    
+                    Api().getAllCharacters { arrayOfCharacters in
+                        self.characters = arrayOfCharacters
+                    }
                 }
-            }.onAppear{
-                Api().getCharacters { (characters) in
-                    self.characters = characters
-                }
+                .navigationTitle("Character List")
+                .foregroundColor(.white)
             }
-            .navigationTitle("Character List")
         }
         
     }

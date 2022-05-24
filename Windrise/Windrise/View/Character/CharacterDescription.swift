@@ -10,14 +10,10 @@ import SwiftUI
 struct CharacterDescription: View {
     
     @State var currentCharacter: Character
+    @State var currentCharacterName: String
     @State var currentCharacterGachaSplash: Image = Image("characterDummy")
     @State var currentCharacterElementIcon: Image = Image("cryoElement")
-    @State var currentCharacterConstellation1: Image = Image("rainCutter")
-    @State var currentCharacterConstellation2: Image = Image("rainCutter")
-    @State var currentCharacterConstellation3: Image = Image("rainCutter")
-    @State var currentCharacterConstellation4: Image = Image("rainCutter")
-    @State var currentCharacterConstellation5: Image = Image("rainCutter")
-    @State var currentCharacterConstellation6: Image = Image("rainCutter")
+    @State var currentCharacterConstellation: [Image] = []
     @State private var talentSelection: String = "Basic"
     @State var constellationStar: Int = 1
     
@@ -321,169 +317,37 @@ struct CharacterDescription: View {
                             }.padding(.vertical, 12)
                             
                             if(!currentCharacter.constellations.isEmpty){
-                                switch(constellationStar){
-                                case 1:
-                                    let cons = currentCharacter.constellations[0]
-                                    
-                                    VStack(alignment: .leading){
-                                        HStack(alignment: .center) {
-                                            VStack{
-                                                currentCharacterConstellation1
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                            }
-                                            .frame(height: 38.0)
-                                            VStack(alignment: .leading){
-                                                Text(cons.name)
-                                                    .font(.headline)
-                                                    .fontWeight(.bold)
-                                                    .padding(.top, 2)
-                                                Text(cons.unlock)
-                                                    .font(.caption)
-                                                    .fontWeight(.semibold)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                        Text(cons.description)
-                                            .font(.caption)
-                                            .padding(.bottom, 10)
-                                    }
-                                case 2:
-                                    let cons = currentCharacter.constellations[1]
-                                    
-                                    VStack(alignment: .leading){
-                                        HStack(alignment: .center) {
-                                            VStack{
-                                                currentCharacterConstellation2
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                            }
-                                            .frame(height: 38.0)
-                                            VStack(alignment: .leading){
-                                                Text(cons.name)
-                                                    .font(.headline)
-                                                    .fontWeight(.bold)
-                                                    .padding(.top, 2)
-                                                Text(cons.unlock)
-                                                    .font(.caption)
-                                                    .fontWeight(.semibold)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                        Text(cons.description)
-                                            .font(.caption)
-                                            .padding(.bottom, 10)
-                                    }
-                                case 3:
-                                    let cons = currentCharacter.constellations[2]
-                                    
-                                    VStack(alignment: .leading){
-                                        HStack(alignment: .center) {
-                                            VStack{
-                                                currentCharacterConstellation3
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                            }
-                                            .frame(height: 38.0)
-                                            VStack(alignment: .leading){
-                                                Text(cons.name)
-                                                    .font(.headline)
-                                                    .fontWeight(.bold)
-                                                    .padding(.top, 2)
-                                                Text(cons.unlock)
-                                                    .font(.caption)
-                                                    .fontWeight(.semibold)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                        Text(cons.description)
-                                            .font(.caption)
-                                            .padding(.bottom, 10)
-                                    }
-                                case 4:
-                                    let cons = currentCharacter.constellations[3]
-                                    
-                                    VStack(alignment: .leading){
-                                        HStack(alignment: .center) {
-                                            VStack{
-                                                currentCharacterConstellation4
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                            }
-                                            .frame(height: 38.0)
-                                            VStack(alignment: .leading){
-                                                Text(cons.name)
-                                                    .font(.headline)
-                                                    .fontWeight(.bold)
-                                                    .padding(.top, 2)
-                                                Text(cons.unlock)
-                                                    .font(.caption)
-                                                    .fontWeight(.semibold)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                        Text(cons.description)
-                                            .font(.caption)
-                                            .padding(.bottom, 10)
-                                    }
-                                case 5:
-                                    let cons = currentCharacter.constellations[4]
-                                    
-                                    VStack(alignment: .leading){
-                                        HStack(alignment: .center) {
-                                            VStack{
-                                                currentCharacterConstellation5
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                            }
-                                            .frame(height: 38.0)
-                                            VStack(alignment: .leading){
-                                                Text(cons.name)
-                                                    .font(.headline)
-                                                    .fontWeight(.bold)
-                                                    .padding(.top, 2)
-                                                Text(cons.unlock)
-                                                    .font(.caption)
-                                                    .fontWeight(.semibold)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                        Text(cons.description)
-                                            .font(.caption)
-                                            .padding(.bottom, 10)
-                                    }
-                                case 6:
-                                    let cons = currentCharacter.constellations[5]
-                                    
-                                    VStack(alignment: .leading){
-                                        HStack(alignment: .center) {
-                                            VStack{
-                                                currentCharacterConstellation6
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                            }
-                                            .frame(height: 38.0)
-                                            VStack(alignment: .leading){
-                                                Text(cons.name)
-                                                    .font(.headline)
-                                                    .fontWeight(.bold)
-                                                    .padding(.top, 2)
-                                                Text(cons.unlock)
-                                                    .font(.caption)
-                                                    .fontWeight(.semibold)
-                                                    .padding(.bottom, 10)
-                                            }
-                                        }
-                                        Text(cons.description)
-                                            .font(.caption)
-                                            .padding(.bottom, 10)
-                                    }
-                                default:
-                                    Text("No Data")
-                                        .font(.caption)
-                                        .padding(.vertical, 10)
-                                }
                                 
+                                let cons = currentCharacter.constellations[constellationStar-1]
+                                
+                                VStack(alignment: .leading){
+                                    HStack(alignment: .center) {
+                                        VStack{
+                                            currentCharacterConstellation[constellationStar-1]
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                        }
+                                        .frame(height: 38.0)
+                                        VStack(alignment: .leading){
+                                            Text(cons.name)
+                                                .font(.headline)
+                                                .fontWeight(.bold)
+                                                .padding(.top, 2)
+                                            Text(cons.unlock)
+                                                .font(.caption)
+                                                .fontWeight(.semibold)
+                                                .padding(.bottom, 10)
+                                        }
+                                    }
+                                    Text(cons.description)
+                                        .font(.caption)
+                                        .padding(.bottom, 10)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            } else {
+                                Text("No Data")
+                                    .font(.caption)
+                                    .padding(.vertical, 10)
                             }
                         }
                         .padding()
@@ -499,7 +363,7 @@ struct CharacterDescription: View {
                 .padding(.vertical, 8.0)
                 .onAppear{
                     // MARK: - Api Settings
-                    Api().getCharacter(currentCharacterName: currentCharacter.name) { character in
+                    Api().getCharacter(currentCharacterName: currentCharacterName) { character in
                         self.currentCharacter = character
                         
                         Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey.lowercased()) { image in
@@ -507,34 +371,16 @@ struct CharacterDescription: View {
                         }
                     }
                     
-                    Api().getCharacterGachaSplash(currentCharacterName: currentCharacter.name) { image in
+                    Api().getCharacterGachaSplash(currentCharacterName: currentCharacterName) { image in
                         self.currentCharacterGachaSplash = image
                     }
                     
-                    Api().getCharacterConstellation1(currentCharacterName: currentCharacter.name) { image in
-                        self.currentCharacterConstellation1 = image
+                    for i in 1..<7 {
+                        Api().getCharacterConstellation(currentCharacterName: currentCharacterName, constellationNumber: i) { image in
+                            self.currentCharacterConstellation.append(image)
+                        }
                     }
                     
-                    Api().getCharacterConstellation2(currentCharacterName: currentCharacter.name) { image in
-                        self.currentCharacterConstellation2 = image
-                    }
-                    
-                    Api().getCharacterConstellation3(currentCharacterName: currentCharacter.name) { image in
-                        self.currentCharacterConstellation3 = image
-                    }
-                    
-                    Api().getCharacterConstellation4(currentCharacterName: currentCharacter.name) { image in
-                        self.currentCharacterConstellation4 = image
-                    }
-                    
-                    Api().getCharacterConstellation5(currentCharacterName: currentCharacter.name) { image in
-                        self.currentCharacterConstellation5 = image
-                    }
-                    
-                    Api().getCharacterConstellation6(currentCharacterName: currentCharacter.name) { image in
-                        self.currentCharacterConstellation6 = image
-                    }
-
                     // MARK: - Segmented Picker Settings
                     UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.white
                     UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
@@ -565,6 +411,6 @@ func dateProcess(rawDate: String) -> String{
 
 struct CharacterDescription_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDescription(currentCharacter: Character(name: "ayaka"))
+        CharacterDescription(currentCharacter: Character(name:"Kamisato Ayaka"), currentCharacterName: "yun-jin")
     }
 }
