@@ -18,6 +18,7 @@
 		045C7F4E2835245B005E46FD /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F4D2835245B005E46FD /* Character.swift */; };
 		045C7F5128352A72005E46FD /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F5028352A72005E46FD /* CharacterList.swift */; };
 		045C7F5428352AAF005E46FD /* CharacterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F5328352AAF005E46FD /* CharacterDescription.swift */; };
+		04D01A79283C735C008FA798 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D01A78283C735C008FA798 /* CharacterCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		045C7F4D2835245B005E46FD /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		045C7F5028352A72005E46FD /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		045C7F5328352AAF005E46FD /* CharacterDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescription.swift; sourceTree = "<group>"; };
+		04D01A78283C735C008FA798 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			children = (
 				045C7F5028352A72005E46FD /* CharacterList.swift */,
 				045C7F5328352AAF005E46FD /* CharacterDescription.swift */,
+				04D01A78283C735C008FA798 /* CharacterCard.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D01A79283C735C008FA798 /* CharacterCard.swift in Sources */,
 				045C7F22283522BF005E46FD /* ContentView.swift in Sources */,
 				045C7F4B283523D4005E46FD /* Data.swift in Sources */,
 				045C7F5128352A72005E46FD /* CharacterList.swift in Sources */,
