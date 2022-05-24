@@ -46,10 +46,6 @@ struct CharacterCard: View {
             .background(.ultraThinMaterial)
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(.red)
-        )
         .padding(2)
         .onAppear{
             Api().getCharacter(currentCharacterName: currentCharacterName) { character in

@@ -71,7 +71,7 @@ class Api{
             guard let data = data else {return}
             
             DispatchQueue.main.async {
-                let gachaSplash = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "characterDummy"))
+                let gachaSplash = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "travelerPortrait"))
                 completion(gachaSplash)
             }
             

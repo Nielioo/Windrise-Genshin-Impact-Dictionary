@@ -11,7 +11,7 @@ struct CharacterDescription: View {
     
     @State var currentCharacter: Character
     @State var currentCharacterName: String
-    @State var currentCharacterGachaSplash: Image = Image("characterDummy")
+    @State var currentCharacterGachaSplash: Image = Image("travelerPortrait")
     @State var currentCharacterElementIcon: Image = Image("cryoElement")
     @State var currentCharacterConstellation: [Image] = []
     @State private var talentSelection: String = "Basic"
@@ -323,9 +323,11 @@ struct CharacterDescription: View {
                                 VStack(alignment: .leading){
                                     HStack(alignment: .center) {
                                         VStack{
-                                            currentCharacterConstellation[constellationStar-1]
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
+                                            if(!currentCharacterConstellation.isEmpty){
+                                                currentCharacterConstellation[constellationStar-1]
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                            }
                                         }
                                         .frame(height: 38.0)
                                         VStack(alignment: .leading){
@@ -411,6 +413,6 @@ func dateProcess(rawDate: String) -> String{
 
 struct CharacterDescription_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDescription(currentCharacter: Character(name:"Kamisato Ayaka"), currentCharacterName: "yun-jin")
+        CharacterDescription(currentCharacter: Character(name:"Unknown"), currentCharacterName: "yun-jin")
     }
 }
