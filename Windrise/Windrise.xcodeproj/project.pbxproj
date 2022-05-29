@@ -19,6 +19,7 @@
 		045C7F5128352A72005E46FD /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F5028352A72005E46FD /* CharacterList.swift */; };
 		045C7F5428352AAF005E46FD /* CharacterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F5328352AAF005E46FD /* CharacterDescription.swift */; };
 		04D01A79283C735C008FA798 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D01A78283C735C008FA798 /* CharacterCard.swift */; };
+		04FD8B38284256FB000D0EF0 /* MyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8B37284256FB000D0EF0 /* MyDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		045C7F5028352A72005E46FD /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		045C7F5328352AAF005E46FD /* CharacterDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescription.swift; sourceTree = "<group>"; };
 		04D01A78283C735C008FA798 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
+		04FD8B37284256FB000D0EF0 /* MyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				045C7F4F28352A48005E46FD /* View */,
 				045C7F4C28352446005E46FD /* Model */,
 				045C7F49283523B5005E46FD /* Resources */,
+				04FD8B36284256C9000D0EF0 /* Util */,
 				045C7F23283522C2005E46FD /* Assets.xcassets */,
 				045C7F25283522C2005E46FD /* Preview Content */,
 			);
@@ -172,6 +175,14 @@
 				04D01A78283C735C008FA798 /* CharacterCard.swift */,
 			);
 			path = Character;
+			sourceTree = "<group>";
+		};
+		04FD8B36284256C9000D0EF0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				04FD8B37284256FB000D0EF0 /* MyDateFormatter.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FD8B38284256FB000D0EF0 /* MyDateFormatter.swift in Sources */,
 				04D01A79283C735C008FA798 /* CharacterCard.swift in Sources */,
 				045C7F22283522BF005E46FD /* ContentView.swift in Sources */,
 				045C7F4B283523D4005E46FD /* Data.swift in Sources */,

@@ -13,7 +13,9 @@ struct CharacterDescription: View {
     @State var currentCharacterName: String
     @State var currentCharacterGachaSplash: Image = Image("travelerPortrait")
     @State var currentCharacterElementIcon: Image = Image("cryoElement")
-    @State var currentCharacterConstellation: [Image] = []
+    @State var currentCharacterTalentIcon: [Image] = []
+    
+    @State var currentCharacterConstellationIcon: [Image] = []
     @State private var talentSelection: String = "Basic"
     @State var constellationStar: Int = 1
     
@@ -107,7 +109,7 @@ struct CharacterDescription: View {
                                             .aspectRatio(contentMode: .fit)
                                     }
                                     .frame(height: 20.0)
-                                    if(currentCharacter.birthday != nil){
+                                    if(currentCharacter.vision != nil){
                                         Text(currentCharacter.vision)
                                             .font(.system(size: 16))
                                             .padding(.bottom,0.5)
@@ -115,14 +117,14 @@ struct CharacterDescription: View {
                                         Text("Unknown")
                                     }
                                 }
-                                if(currentCharacter.birthday != nil){
+                                if(currentCharacter.nation != nil){
                                     Text(currentCharacter.nation)
                                         .font(.system(size: 16))
                                         .padding(.bottom,0.5)
                                 } else {
                                     Text("Unknown")
                                 }
-                                if(currentCharacter.birthday != nil){
+                                if(currentCharacter.weapon != nil){
                                     Text(currentCharacter.weapon)
                                         .font(.system(size: 16))
                                         .padding(.bottom,0.5)
@@ -130,7 +132,7 @@ struct CharacterDescription: View {
                                     Text("Unknown")
                                 }
                                 if(currentCharacter.birthday != nil){
-                                    Text(dateProcess(rawDate: currentCharacter.birthday ?? "Unknown"))
+                                    Text(MyDateFormatter.birthdayDate(currentCharacter.birthday!))
                                         .font(.system(size: 16))
                                 } else {
                                     Text("Unknown")
@@ -196,7 +198,16 @@ struct CharacterDescription: View {
                                 case "Basic":
                                     let basic = currentCharacter.skillTalents[0]
                                     let basicSplit = basic.description.split(separator: "\n")
-                                    
+                                
+                                    VStack{
+                                        if(!currentCharacterTalentIcon.isEmpty){
+                                            currentCharacterTalentIcon[0]
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                        }
+                                    }
+                                    .frame(height: 38.0)
+                                    .padding(.top, 12)
                                     Text(basic.name)
                                         .fontWeight(.semibold)
                                         .multilineTextAlignment(.center)
@@ -218,6 +229,15 @@ struct CharacterDescription: View {
                                 case "Skill":
                                     let skill = currentCharacter.skillTalents[1]
                                     
+                                    VStack{
+                                        if(!currentCharacterTalentIcon.isEmpty){
+                                            currentCharacterTalentIcon[1]
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                        }
+                                    }
+                                    .frame(height: 38.0)
+                                    .padding(.top, 12)
                                     Text(skill.name)
                                         .fontWeight(.semibold)
                                         .multilineTextAlignment(.center)
@@ -229,6 +249,15 @@ struct CharacterDescription: View {
                                 case "Burst":
                                     let burst = currentCharacter.skillTalents[2]
                                     
+                                    VStack{
+                                        if(!currentCharacterTalentIcon.isEmpty){
+                                            currentCharacterTalentIcon[2]
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                        }
+                                    }
+                                    .frame(height: 38.0)
+                                    .padding(.top, 12)
                                     Text(burst.name)
                                         .fontWeight(.semibold)
                                         .multilineTextAlignment(.center)
@@ -271,17 +300,32 @@ struct CharacterDescription: View {
                                     ForEach(currentCharacter.passiveTalents.indices, id: \.self){ index in
                                         let passive = currentCharacter.passiveTalents[index]
                                         
-                                        Text(passive.name)
-                                            .font(.subheadline)
-                                            .fontWeight(.bold)
-                                            .padding(.top, 2)
-                                        Text(passive.unlock)
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .padding(.bottom, 10)
+                                        HStack(alignment: .center) {
+                                            VStack{
+                                                if(!currentCharacterTalentIcon.isEmpty){
+                                                    currentCharacterTalentIcon[index+3]
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                }
+                                            }
+                                            .frame(height: 38.0)
+                                            
+                                            VStack(alignment: .leading){
+                                                Text(passive.name)
+                                                    .font(.subheadline)
+                                                    .fontWeight(.bold)
+                                                    .padding(.top, 2)
+                                                Text(passive.unlock)
+                                                    .font(.caption)
+                                                    .fontWeight(.semibold)
+                                                    .padding(.bottom, 10)
+                                            }
+                                        }
+                                        
                                         Text(passive.description)
                                             .font(.caption)
                                             .padding(.bottom, 10)
+                                        
                                     }
                                 }
                             } else {
@@ -323,8 +367,8 @@ struct CharacterDescription: View {
                                 VStack(alignment: .leading){
                                     HStack(alignment: .center) {
                                         VStack{
-                                            if(!currentCharacterConstellation.isEmpty){
-                                                currentCharacterConstellation[constellationStar-1]
+                                            if(!currentCharacterConstellationIcon.isEmpty){
+                                                currentCharacterConstellationIcon[constellationStar-1]
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
                                             }
@@ -377,9 +421,40 @@ struct CharacterDescription: View {
                         self.currentCharacterGachaSplash = image
                     }
                     
+                    for i in 1..<8 {
+                        
+                        if (i == 1){
+                            let index = "na"
+                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
+                                self.currentCharacterTalentIcon.append(image)
+                            }
+                        } else if (i == 2){
+                            let index = "skill"
+                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
+                                self.currentCharacterTalentIcon.append(image)
+                            }
+                        } else if (i == 3){
+                            let index = "burst"
+                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
+                                self.currentCharacterTalentIcon.append(image)
+                            }
+                        } else if(i>=4 && i<=6){
+                            let index = "passive-\(String(i-4))"
+                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
+                                self.currentCharacterTalentIcon.append(image)
+                            }
+                        } else if(i == 7){
+                            let index = "passive-misc"
+                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
+                                self.currentCharacterTalentIcon.append(image)
+                            }
+                        }
+                        
+                    }
+                    
                     for i in 1..<7 {
-                        Api().getCharacterConstellation(currentCharacterName: currentCharacterName, constellationNumber: i) { image in
-                            self.currentCharacterConstellation.append(image)
+                        Api().getCharacterConstellationIcon(currentCharacterName: currentCharacterName, constellationNumber: i) { image in
+                            self.currentCharacterConstellationIcon.append(image)
                         }
                     }
                     
@@ -392,23 +467,6 @@ struct CharacterDescription: View {
             }
         }
     }
-}
-
-func dateProcess(rawDate: String) -> String{
-    let DEFAULT_YEAR: String = "2000"
-    
-    let rawDate = rawDate.replacingOccurrences(of: "0000", with: DEFAULT_YEAR)
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    
-    guard let tmpDate = dateFormatter.date(from: rawDate) else { return rawDate}
-    
-    let dateFormatter2 = DateFormatter()
-    dateFormatter2.dateFormat = "dd MMMM"
-    
-    let finalDate = dateFormatter2.string(from: tmpDate)
-    return finalDate
 }
 
 struct CharacterDescription_Previews: PreviewProvider {

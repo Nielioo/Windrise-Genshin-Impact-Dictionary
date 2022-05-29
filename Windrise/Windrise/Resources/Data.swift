@@ -134,8 +134,25 @@ class Api{
         .resume()
     }
     
+    //MARK: - Talent Icon
+    func getCharacterTalentIcon(currentCharacterName: String, index: String, completion: @escaping (Image) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/talent-\(index)") else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            
+            guard let data = data else {return}
+            
+            DispatchQueue.main.async {
+                let talentIcon = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "rainCutter"))
+                completion(talentIcon)
+            }
+            
+        }
+        .resume()
+    }
+    
     //MARK: - Constellation Icon
-    func getCharacterConstellation(currentCharacterName: String, constellationNumber: Int, completion: @escaping (Image) -> ()){
+    func getCharacterConstellationIcon(currentCharacterName: String, constellationNumber: Int, completion: @escaping (Image) -> ()){
         guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/constellation-\(constellationNumber)") else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
