@@ -13,7 +13,7 @@ struct CharacterDescription: View {
     @State var currentCharacterName: String
     @State var currentCharacterGachaSplash: Image = Image("travelerPortrait")
     @State var currentCharacterElementIcon: Image = Image("cryoElement")
-    @State var currentCharacterTalentIcon: [Image] = []
+    @State var currentCharacterTalentIcon: [String : Image] = [:]
     
     @State var currentCharacterConstellationIcon: [Image] = []
     @State private var talentSelection: String = "Basic"
@@ -197,11 +197,11 @@ struct CharacterDescription: View {
                                 switch(talentSelection){
                                 case "Basic":
                                     let basic = currentCharacter.skillTalents[0]
-                                    let basicSplit = basic.description.split(separator: "\n")
-                                
+                                    let basicSplit = basic.description.components(separatedBy: "\n")
+                                    
                                     VStack{
-                                        if(!currentCharacterTalentIcon.isEmpty){
-                                            currentCharacterTalentIcon[0]
+                                        if(currentCharacterTalentIcon.keys.contains("na")){
+                                            currentCharacterTalentIcon["na"]!
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                         }
@@ -230,8 +230,8 @@ struct CharacterDescription: View {
                                     let skill = currentCharacter.skillTalents[1]
                                     
                                     VStack{
-                                        if(!currentCharacterTalentIcon.isEmpty){
-                                            currentCharacterTalentIcon[1]
+                                        if(currentCharacterTalentIcon.keys.contains("skill")){
+                                            currentCharacterTalentIcon["skill"]!
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                         }
@@ -250,8 +250,8 @@ struct CharacterDescription: View {
                                     let burst = currentCharacter.skillTalents[2]
                                     
                                     VStack{
-                                        if(!currentCharacterTalentIcon.isEmpty){
-                                            currentCharacterTalentIcon[2]
+                                        if(currentCharacterTalentIcon.keys.contains("burst")){
+                                            currentCharacterTalentIcon["burst"]!
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                         }
@@ -302,8 +302,8 @@ struct CharacterDescription: View {
                                         
                                         HStack(alignment: .center) {
                                             VStack{
-                                                if(!currentCharacterTalentIcon.isEmpty){
-                                                    currentCharacterTalentIcon[index+3]
+                                                if(currentCharacterTalentIcon.keys.contains("passive-\(index)")){
+                                                    currentCharacterTalentIcon["passive-\(index)"]!
                                                         .resizable()
                                                         .aspectRatio(contentMode: .fit)
                                                 }
@@ -421,35 +421,25 @@ struct CharacterDescription: View {
                         self.currentCharacterGachaSplash = image
                     }
                     
-                    for i in 1..<8 {
-                        
-                        if (i == 1){
-                            let index = "na"
-                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
-                                self.currentCharacterTalentIcon.append(image)
-                            }
-                        } else if (i == 2){
-                            let index = "skill"
-                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
-                                self.currentCharacterTalentIcon.append(image)
-                            }
-                        } else if (i == 3){
-                            let index = "burst"
-                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
-                                self.currentCharacterTalentIcon.append(image)
-                            }
-                        } else if(i>=4 && i<=6){
-                            let index = "passive-\(String(i-4))"
-                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
-                                self.currentCharacterTalentIcon.append(image)
-                            }
-                        } else if(i == 7){
-                            let index = "passive-misc"
-                            Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: index) { image in
-                                self.currentCharacterTalentIcon.append(image)
-                            }
-                        }
-                        
+                    var talentIndex: String = ""
+                    
+                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "na") { image in
+                        self.currentCharacterTalentIcon["na"] = image
+                    }
+                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "skill") { image in
+                        self.currentCharacterTalentIcon["skill"] = image
+                    }
+                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "burst") { image in
+                        self.currentCharacterTalentIcon["burst"] = image
+                    }
+                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "passive-0") { image in
+                        self.currentCharacterTalentIcon["passive-0"] = image
+                    }
+                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "passive-1") { image in
+                        self.currentCharacterTalentIcon["passive-1"] = image
+                    }
+                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "passive-2") { image in
+                        self.currentCharacterTalentIcon["passive-2"] = image
                     }
                     
                     for i in 1..<7 {
@@ -471,6 +461,6 @@ struct CharacterDescription: View {
 
 struct CharacterDescription_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDescription(currentCharacter: Character(name:"Unknown"), currentCharacterName: "yun-jin")
+        CharacterDescription(currentCharacter: Character(name:"Unknown"), currentCharacterName: "eula")
     }
 }

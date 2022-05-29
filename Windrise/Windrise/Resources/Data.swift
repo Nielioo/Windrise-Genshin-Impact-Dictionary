@@ -143,7 +143,7 @@ class Api{
             guard let data = data else {return}
             
             DispatchQueue.main.async {
-                let talentIcon = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "rainCutter"))
+                let talentIcon = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: ""))
                 completion(talentIcon)
             }
             
