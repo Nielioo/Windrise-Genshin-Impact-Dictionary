@@ -66,13 +66,28 @@ class Api{
     func getCharacterGachaSplash(currentCharacterName: String, completion: @escaping (Image) -> ()){
         guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/gacha-splash") else { return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard let data = data else {return}
             
-            DispatchQueue.main.async {
-                let gachaSplash = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "travelerPortrait"))
-                completion(gachaSplash)
+            if(response?.mimeType != "image/webp"){
+                let image = Image("travelerPortrait")
+                
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } else {
+                do{
+                    guard let uiImage = UIImage(data: data) else {
+                        return
+                    }
+                    
+                    let image = Image(uiImage: uiImage)
+                    
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
+                }
             }
             
         }
@@ -88,9 +103,24 @@ class Api{
             guard let data = data, error == nil else {return}
             
             
-            DispatchQueue.main.async {
-                let CharacterIcon = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "travelerPortrait"))
-                completion(CharacterIcon)
+            if(response?.mimeType != "image/webp"){
+                let image = Image("")
+                
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } else {
+                do{
+                    guard let uiImage = UIImage(data: data) else {
+                        return
+                    }
+                    
+                    let image = Image(uiImage: uiImage)
+                    
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
+                }
             }
         }
         .resume()
@@ -108,9 +138,16 @@ class Api{
                     completion(image)
                 }
             } else {
-                DispatchQueue.main.async {
-                    let CharacterIconBig = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "travelerPortrait"))
-                    completion(CharacterIconBig)
+                do{
+                    guard let uiImage = UIImage(data: data) else {
+                        return
+                    }
+                    
+                    let image = Image(uiImage: uiImage)
+                    
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
                 }
             }
         }
@@ -121,13 +158,28 @@ class Api{
     func getCharacterElementIcon(currentCharacterVisionKey: String, completion: @escaping (Image) -> ()){
         guard let url = URL(string: "\(BASE_URL)/elements/\(currentCharacterVisionKey)/icon") else { return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard let data = data else {return}
             
-            DispatchQueue.main.async {
-                let elementIcon = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "cryoElement"))
-                completion(elementIcon)
+            if(response?.mimeType != "image/webp"){
+                let image = Image("cryoElement")
+                
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } else {
+                do{
+                    guard let uiImage = UIImage(data: data) else {
+                        return
+                    }
+                    
+                    let image = Image(uiImage: uiImage)
+                    
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
+                }
             }
             
         }
@@ -138,13 +190,28 @@ class Api{
     func getCharacterTalentIcon(currentCharacterName: String, index: String, completion: @escaping (Image) -> ()){
         guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/talent-\(index)") else { return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard let data = data else {return}
             
-            DispatchQueue.main.async {
-                let talentIcon = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: ""))
-                completion(talentIcon)
+            if(response?.mimeType != "image/webp"){
+                let image = Image("")
+                
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } else {
+                do{
+                    guard let uiImage = UIImage(data: data) else {
+                        return
+                    }
+                    
+                    let image = Image(uiImage: uiImage)
+                    
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
+                }
             }
             
         }
@@ -155,13 +222,28 @@ class Api{
     func getCharacterConstellationIcon(currentCharacterName: String, constellationNumber: Int, completion: @escaping (Image) -> ()){
         guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/constellation-\(constellationNumber)") else { return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard let data = data else {return}
             
-            DispatchQueue.main.async {
-                let constellationIcon = Image(uiImage: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "rainCutter"))
-                completion(constellationIcon)
+            if(response?.mimeType != "image/webp"){
+                let image = Image("")
+                
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } else {
+                do{
+                    guard let uiImage = UIImage(data: data) else {
+                        return
+                    }
+                    
+                    let image = Image(uiImage: uiImage)
+                    
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
+                }
             }
             
         }
