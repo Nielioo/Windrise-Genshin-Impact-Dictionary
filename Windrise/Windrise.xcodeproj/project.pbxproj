@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04287BFA2845A93700ADA9CF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04287BF92845A93700ADA9CF /* ViewModel.swift */; };
 		045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F1F283522BF005E46FD /* WindriseApp.swift */; };
 		045C7F22283522BF005E46FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F21283522BF005E46FD /* ContentView.swift */; };
 		045C7F24283522C2005E46FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045C7F23283522C2005E46FD /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04287BF92845A93700ADA9CF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		045C7F1C283522BF005E46FD /* Windrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045C7F1F283522BF005E46FD /* WindriseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseApp.swift; sourceTree = "<group>"; };
 		045C7F21283522BF005E46FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04287BF82845A90A00ADA9CF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04287BF92845A93700ADA9CF /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		045C7F13283522BF005E46FD = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 				045C7F1F283522BF005E46FD /* WindriseApp.swift */,
 				045C7F4F28352A48005E46FD /* View */,
 				045C7F4C28352446005E46FD /* Model */,
+				04287BF82845A90A00ADA9CF /* ViewModel */,
 				045C7F49283523B5005E46FD /* Resources */,
 				04FD8B36284256C9000D0EF0 /* Util */,
 				045C7F23283522C2005E46FD /* Assets.xcassets */,
@@ -316,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD8B38284256FB000D0EF0 /* MyDateFormatter.swift in Sources */,
+				04287BFA2845A93700ADA9CF /* ViewModel.swift in Sources */,
 				04D01A79283C735C008FA798 /* CharacterCard.swift in Sources */,
 				045C7F22283522BF005E46FD /* ContentView.swift in Sources */,
 				045C7F4B283523D4005E46FD /* Data.swift in Sources */,

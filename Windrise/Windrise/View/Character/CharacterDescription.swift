@@ -409,7 +409,7 @@ struct CharacterDescription: View {
                 .padding(.vertical, 8.0)
                 .onAppear{
                     // MARK: - Api Settings
-                    Api().getCharacter(currentCharacterName: currentCharacterName) { character in
+                    Api().getCharacter(characterName: currentCharacterName) { character in
                         self.currentCharacter = character
                         
                         Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey.lowercased()) { image in
@@ -462,6 +462,6 @@ struct CharacterDescription: View {
 
 struct CharacterDescription_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDescription(currentCharacter: Character(name:"Unknown"), currentCharacterName: "eula")
+        CharacterDescription(currentCharacter: Character(name:"eula"), currentCharacterName: "eula")
     }
 }

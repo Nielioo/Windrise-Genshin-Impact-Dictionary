@@ -9,8 +9,7 @@ import SwiftUI
 
 struct CharacterList: View {
     
-    @State var characters: [Character] = []
-    @State var charactersName: [String] = []
+    @EnvironmentObject var characterViewModel: CharacterViewModel
     
     private var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
@@ -23,23 +22,21 @@ struct CharacterList: View {
                 
                 ScrollView(showsIndicators: false){
                     LazyVGrid(columns: columns){
-                        ForEach(characters.indices, id: \.self){ index in
-                            NavigationLink(destination: CharacterDescription(currentCharacter: characters[index], currentCharacterName: charactersName[index])){
-                                CharacterCard(currentCharacter: characters[index], currentCharacterName: charactersName[index])
-                            }
-                            .tag(characters[index].name)
-                            .buttonStyle(PlainButtonStyle())
+                        ForEach(characterViewModel.characters.indices, id: \.self){ index in
+                            NavigationLink(
+                                destination:
+                                    CharacterDescription(
+                                        currentCharacter: characterViewModel.characters[index],
+                                        currentCharacterName: characterViewModel.charactersName[index])){
+                                            CharacterCard(
+                                                currentCharacter: characterViewModel.characters[index],
+                                                currentCharacterName: characterViewModel.charactersName[index])
+                                        }
+                                        .tag(characterViewModel.characters[index].name)
+                                        .buttonStyle(PlainButtonStyle())
                         }
                     }
                     .padding()
-                }.onAppear{
-                    Api().getCharactersName { arrayOfCharactersName in
-                        self.charactersName = arrayOfCharactersName
-                    }
-                    
-                    Api().getAllCharacters { arrayOfCharacters in
-                        self.characters = arrayOfCharacters
-                    }
                 }
                 .navigationTitle("Character List")
                 .foregroundColor(.white)
@@ -52,5 +49,6 @@ struct CharacterList: View {
 struct CharacterList_Previews: PreviewProvider {
     static var previews: some View {
         CharacterList()
+            .environmentObject(CharacterViewModel())
     }
 }

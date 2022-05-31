@@ -39,8 +39,8 @@ class Api{
     }
     
     //MARK: - Character
-    func getCharacter(currentCharacterName: String, completion: @escaping (Character) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)") else { return }
+    func getCharacter(characterName: String, completion: @escaping (Character) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(characterName)") else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CharacterCard: View {
-    @State var currentCharacter: Character
-    @State var currentCharacterName: String
-    @State var currentCharacterElementIcon: Image = Image("")
-    @State var currentCharacterIconBig: Image = Image("")
+    
+    @EnvironmentObject var characterViewModel: CharacterViewModel
+    var currentCharacter: Character
+    var currentCharacterName: String
     
     var body: some View {
         VStack(spacing: 0) {
@@ -19,14 +19,14 @@ struct CharacterCard: View {
                 Image("BackgroundItem\(currentCharacter.rarity.description)Star")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                currentCharacterIconBig
+                characterViewModel.characterIconBig[currentCharacterName]?
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
             .aspectRatio(1, contentMode: .fit)
             .overlay (alignment: .topLeading){
                 if (!currentCharacter.vision.isEmpty){
-                currentCharacterElementIcon
+                    characterViewModel.elementsIcon[currentCharacter.visionKey.lowercased()]?
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 30)
@@ -47,24 +47,12 @@ struct CharacterCard: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding(2)
-        .onAppear{
-            Api().getCharacter(currentCharacterName: currentCharacterName) { character in
-                self.currentCharacter = character
-                
-                Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey.lowercased()) { image in
-                    self.currentCharacterElementIcon = image
-                }
-            }
-            
-            Api().getCharacterIconBig(currentCharacterName: currentCharacterName) { image in
-                self.currentCharacterIconBig = image
-            }
-        }
     }
 }
 
 struct CharacterCard_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterCard(currentCharacter: Character(name: "Kamisato Ayaka"), currentCharacterName: "yae-miko")
+        CharacterCard(currentCharacter: Character(name:"Kamisato Ayaka"), currentCharacterName: "ayaka")
+            .environmentObject(CharacterViewModel())
     }
 }
