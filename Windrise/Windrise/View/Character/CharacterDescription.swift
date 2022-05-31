@@ -417,12 +417,12 @@ struct CharacterDescription: View {
                         }
                     }
                     
+                    // Gacha Splash
                     Api().getCharacterGachaSplash(currentCharacterName: currentCharacterName) { image in
                         self.currentCharacterGachaSplash = image
                     }
                     
-                    var talentIndex: String = ""
-                    
+                    // Talent Icon
                     Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "na") { image in
                         self.currentCharacterTalentIcon["na"] = image
                     }
@@ -442,6 +442,7 @@ struct CharacterDescription: View {
                         self.currentCharacterTalentIcon["passive-2"] = image
                     }
                     
+                    // constellation
                     for i in 1..<7 {
                         Api().getCharacterConstellationIcon(currentCharacterName: currentCharacterName, constellationNumber: i) { image in
                             self.currentCharacterConstellationIcon.append(image)
