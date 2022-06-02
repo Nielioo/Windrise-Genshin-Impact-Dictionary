@@ -18,7 +18,7 @@ class CharacterDetailViewModel: ObservableObject {
     
     private let talentIndexes:[String] = ["na", "skill", "burst", "passive-0", "passive-1", "passive-2", "passive-misc"]
     
-    func fetch(nameId: String) {
+    func fetch(nameId: String, moc: NSManagedObjectContext) {
         // MARK: Get gacha splash
         Api().getCharacterGachaSplash(nameId: nameId) { image in
             self.gachaSplash = image
@@ -39,29 +39,28 @@ class CharacterDetailViewModel: ObservableObject {
         }
         
         // MARK: Get favorite status
-//        let fetchFavoriteCharacters: NSFetchRequest<FavoriteCharacter> = FavoriteCharacter.fetchRequest()
-//        fetchFavoriteCharacters.predicate = NSPredicate(format: "id = %@", id)
-//
-//        if let results = try? moc.fetch(fetchFavoriteCharacters) {
-//            if results.count != 0 {
-//                // Data exists
-//                if let favoriteCharacter = results.first {
-//                    self.isFavorite = favoriteCharacter.isFavorite
-//                }
-//            }
-//        }
+        let fetchFavoriteCharacters: NSFetchRequest<FavoriteCharacter> = FavoriteCharacter.fetchRequest()
+        fetchFavoriteCharacters.predicate = NSPredicate(format: "nameId = %@", nameId)
+
+        if let results = try? moc.fetch(fetchFavoriteCharacters) {
+            if results.count != 0 {
+                if let favoriteCharacter = results.first {
+                    self.isFavorite = favoriteCharacter.isFavorite
+                }
+            }
+        }
         
         // MARK: Get own status
-//        let fetchOwnCharacters: NSFetchRequest<OwnCharacter> = OwnCharacter.fetchRequest()
-//        fetchOwnCharacters.predicate = NSPredicate(format: "id = %@", id)
-//        
-//        if let results = try? moc.fetch(fetchOwnCharacters) {
-//            if results.count != 0 {
-//                // Data exists
-//                if let ownCharacter = results.first {
-//                    self.isOwned = ownCharacter.isOwned
-//                }
-//            }
-//        }
+        let fetchOwnedCharacters: NSFetchRequest<OwnedCharacter> = OwnedCharacter.fetchRequest()
+        fetchOwnedCharacters.predicate = NSPredicate(format: "nameId = %@", nameId)
+        
+        if let results = try? moc.fetch(fetchOwnedCharacters) {
+            if results.count != 0 {
+                // Data exists
+                if let ownedCharacter = results.first {
+                    self.isOwned = ownedCharacter.isOwned
+                }
+            }
+        }
     }
 }

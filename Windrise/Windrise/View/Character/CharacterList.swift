@@ -17,8 +17,7 @@ struct CharacterList: View {
         
         NavigationView {
             ZStack{
-                LinearGradient(gradient: Gradient(colors: [Color("BackgroundDarkBlue"), Color("BackgroundDarkPurple")]), startPoint: .topLeading, endPoint: .bottomLeading)
-                    .ignoresSafeArea()
+                MyColor.mainBackground.ignoresSafeArea()
                 
                 ScrollView(showsIndicators: false){
                     LazyVGrid(columns: columns){

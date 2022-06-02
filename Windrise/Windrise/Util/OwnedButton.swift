@@ -1,5 +1,5 @@
 //
-//  FavoriteButton.swift
+//  OwnedButton.swift
 //  Windrise
 //
 //  Created by MacBook Pro on 02/06/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct FavoriteButton: View {
+struct OwnedButton: View {
     
     @Environment(\.managedObjectContext) var moc
     @State var nameId: String
@@ -25,44 +25,45 @@ struct FavoriteButton: View {
             
             switch (page) {
             case .character:
-                let fetchFavoriteCharacters: NSFetchRequest<FavoriteCharacter> = FavoriteCharacter.fetchRequest()
-                fetchFavoriteCharacters.predicate = NSPredicate(format: "nameId = %@", nameId)
+                let fetchOwnedCharacters: NSFetchRequest<OwnedCharacter> = OwnedCharacter.fetchRequest()
+                fetchOwnedCharacters.predicate = NSPredicate(format: "nameId = %@", nameId)
                 
-                let results = try? moc.fetch(fetchFavoriteCharacters)
+                let results = try? moc.fetch(fetchOwnedCharacters)
                 
                 if results?.count == 0 {
                     // New data
-                    let favoriteCharacter = FavoriteCharacter(context: moc)
-                    favoriteCharacter.nameId = nameId
-                    favoriteCharacter.isFavorite = isSet
+                    let ownedCharacter = OwnedCharacter(context: moc)
+                    ownedCharacter.nameId = nameId
+                    ownedCharacter.isOwned = isSet
                 } else {
                     // Data exists
                     let favoriteCharacter = results?.first
                     favoriteCharacter?.nameId = nameId
-                    favoriteCharacter?.isFavorite = isSet
+                    favoriteCharacter?.isOwned = isSet
                 }
             }
             
             try? moc.save()
         } label: {
             if isSet {
-                ButtonFavoriteActive()
+                ButtonOwnedActive()
             } else {
-                ButtonFavoriteInactive()
+                ButtonOwnedInactive()
             }
         }
+    
     }
 }
 
-struct ButtonFavoriteActive: View {
+struct ButtonOwnedActive: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(MyColor.favoriteActiveBackground)
+                .fill(MyColor.ownedActiveBackground)
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 40)
             
-            Image(systemName: "heart.fill")
+            Image(systemName: "checkmark")
                 .font(.system(size: 20))
                 .foregroundColor(.white)
                 .offset(y: 1)
@@ -70,7 +71,7 @@ struct ButtonFavoriteActive: View {
     }
 }
 
-struct ButtonFavoriteInactive: View {
+struct ButtonOwnedInactive: View {
     var body: some View {
         ZStack {
             Circle()
@@ -78,7 +79,7 @@ struct ButtonFavoriteInactive: View {
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 40)
             
-            Image(systemName: "heart.fill")
+            Image(systemName: "checkmark")
                 .font(.system(size: 20))
                 .foregroundColor(.gray)
                 .offset(y: 1)
@@ -86,8 +87,9 @@ struct ButtonFavoriteInactive: View {
     }
 }
 
-struct FavoriteButton_Previews: PreviewProvider {
+struct OwnedButton_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteButton(nameId: "albedo", page: .character, isSet: .constant(true))
+        OwnedButton(nameId: "albedo", page: .character, isSet: .constant(false))
+            .environment(\.managedObjectContext, DataController().container.viewContext)
     }
 }

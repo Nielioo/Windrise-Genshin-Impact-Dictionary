@@ -13,7 +13,7 @@
 		045BA4ED284879E000E7C668 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4EC284879E000E7C668 /* Profile.swift */; };
 		045BA4EF28487D4800E7C668 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4EE28487D4800E7C668 /* MyColor.swift */; };
 		045BA4F128487D5F00E7C668 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F028487D5F00E7C668 /* FavoriteButton.swift */; };
-		045BA4F328487D8400E7C668 /* OwnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F228487D8400E7C668 /* OwnButton.swift */; };
+		045BA4F328487D8400E7C668 /* OwnedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F228487D8400E7C668 /* OwnedButton.swift */; };
 		045BA4F82848960000E7C668 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F62848960000E7C668 /* User.xcdatamodeld */; };
 		045BA4FA2848961D00E7C668 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F92848961D00E7C668 /* DataController.swift */; };
 		045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F1F283522BF005E46FD /* WindriseApp.swift */; };
@@ -55,7 +55,7 @@
 		045BA4EC284879E000E7C668 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		045BA4EE28487D4800E7C668 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		045BA4F028487D5F00E7C668 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
-		045BA4F228487D8400E7C668 /* OwnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnButton.swift; sourceTree = "<group>"; };
+		045BA4F228487D8400E7C668 /* OwnedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedButton.swift; sourceTree = "<group>"; };
 		045BA4F72848960000E7C668 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		045BA4F92848961D00E7C668 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		045C7F1C283522BF005E46FD /* Windrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,7 +247,7 @@
 				04FD8B37284256FB000D0EF0 /* MyDateFormatter.swift */,
 				045BA4EE28487D4800E7C668 /* MyColor.swift */,
 				045BA4F028487D5F00E7C668 /* FavoriteButton.swift */,
-				045BA4F228487D8400E7C668 /* OwnButton.swift */,
+				045BA4F228487D8400E7C668 /* OwnedButton.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 				045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */,
 				045BA4F128487D5F00E7C668 /* FavoriteButton.swift in Sources */,
 				045C7F5428352AAF005E46FD /* CharacterDescription.swift in Sources */,
-				045BA4F328487D8400E7C668 /* OwnButton.swift in Sources */,
+				045BA4F328487D8400E7C668 /* OwnedButton.swift in Sources */,
 				045C7F4E2835245B005E46FD /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

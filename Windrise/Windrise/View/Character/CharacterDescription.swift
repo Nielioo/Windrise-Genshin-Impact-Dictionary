@@ -10,15 +10,12 @@ import CoreData
 
 struct CharacterDescription: View {
     
+    @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var mainViewModel: MainViewModel
     @StateObject var characterDetailViewModel: CharacterDetailViewModel = CharacterDetailViewModel()
     @State var currentNameId: String
     @State var currentCharacter: Character
-//    @State var currentCharacterGachaSplash: Image = Image("travelerPortrait")
-//    @State var currentCharacterElementIcon: Image = Image("cryoElement")
-//    @State var currentCharacterTalentIcon: [String : Image] = [:]
     
-//    @State var currentCharacterConstellationIcon: [Image] = []
     @State private var talentSelection: String = "Basic"
     @State var constellationStar: Int = 1
     
@@ -44,42 +41,51 @@ struct CharacterDescription: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("BackgroundDarkBlue"), Color("BackgroundDarkPurple")]), startPoint: .topLeading, endPoint: .bottomLeading)
-                .ignoresSafeArea()
+            MyColor.mainBackground.ignoresSafeArea()
             
             ScrollView {
                 
-                ZStack(alignment: .bottomTrailing){
-                    // MARK: - Gacha Splash
-                    VStack(alignment: .center){
-                        characterDetailViewModel.gachaSplash
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }.ignoresSafeArea()
-                    
-                    // MARK: - Intro
-                    VStack {
-                        VStack{
-                            Text(currentCharacter.name)
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .padding(.top, 12)
-                                .padding(.bottom, 2)
-                            
-                            HStack(alignment: .bottom){
-                                ForEach(1..<currentCharacter.rarity+1, id: \.self){ number in
-                                    rarityState(for: number)
-                                        .foregroundColor(Color.yellow)
+                ZStack(alignment: .topTrailing) {
+                    ZStack(alignment: .bottomTrailing){
+                        // MARK: - Gacha Splash
+                        VStack(alignment: .center){
+                            characterDetailViewModel.gachaSplash
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }.ignoresSafeArea()
+                        
+                        // MARK: - Intro
+                        VStack {
+                            VStack{
+                                Text(currentCharacter.name)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                HStack(alignment: .bottom){
+                                    ForEach(1..<currentCharacter.rarity+1, id: \.self){ number in
+                                        rarityState(for: number)
+                                            .foregroundColor(Color.yellow)
+                                    }
                                 }
+                                .padding(.bottom, 10)
                             }
-                            .padding(.bottom, 10)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .background(Color.black.opacity(0.7))
+                            .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                         }
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .background(Color.black.opacity(0.7))
-                        .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                        .padding(.horizontal, 12.0)
                     }
-                    .padding(.horizontal, 12.0)
+                    
+                    // MARK: - Button
+                    HStack(alignment: .center){
+                        FavoriteButton(nameId: currentNameId, page: .character, isSet: $characterDetailViewModel.isFavorite)
+                        
+                        OwnedButton(nameId: currentNameId, page: .character, isSet: $characterDetailViewModel.isOwned)
+                    }
+                    .padding()
                 }
                 
                 VStack(alignment: .center) {
@@ -444,7 +450,7 @@ struct CharacterDescription: View {
                 .padding(.vertical, 8.0)
                 .onAppear{
                     // MARK: - View Model Setup
-                    characterDetailViewModel.fetch(nameId: currentNameId)
+                    characterDetailViewModel.fetch(nameId: currentNameId, moc: moc)
                     
                     // MARK: - Segmented Picker Settings
                     UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.white
@@ -462,6 +468,7 @@ struct CharacterDescription_Previews: PreviewProvider {
     
     static var previews: some View {
         CharacterDescription(currentNameId: mainViewModel.nameId.first ?? "", currentCharacter: mainViewModel.characters.first ?? Character())
+            .environment(\.managedObjectContext, DataController().container.viewContext)
             .environmentObject(mainViewModel)
     }
 }
