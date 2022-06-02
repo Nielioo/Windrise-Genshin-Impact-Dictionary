@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct WindriseApp: App {
+    
+    @StateObject var mainViewModel:MainViewModel = MainViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(mainViewModel)
         }
     }
 }
