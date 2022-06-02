@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		04287BFA2845A93700ADA9CF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04287BF92845A93700ADA9CF /* MainViewModel.swift */; };
 		045BA4E7284857BB00E7C668 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4E6284857BB00E7C668 /* CharacterDetailViewModel.swift */; };
+		045BA4E9284879B400E7C668 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4E8284879B400E7C668 /* Home.swift */; };
+		045BA4ED284879E000E7C668 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4EC284879E000E7C668 /* Profile.swift */; };
+		045BA4EF28487D4800E7C668 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4EE28487D4800E7C668 /* MyColor.swift */; };
+		045BA4F128487D5F00E7C668 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F028487D5F00E7C668 /* FavoriteButton.swift */; };
+		045BA4F328487D8400E7C668 /* OwnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F228487D8400E7C668 /* OwnButton.swift */; };
+		045BA4F82848960000E7C668 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F62848960000E7C668 /* User.xcdatamodeld */; };
+		045BA4FA2848961D00E7C668 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BA4F92848961D00E7C668 /* DataController.swift */; };
 		045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F1F283522BF005E46FD /* WindriseApp.swift */; };
 		045C7F22283522BF005E46FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C7F21283522BF005E46FD /* ContentView.swift */; };
 		045C7F24283522C2005E46FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045C7F23283522C2005E46FD /* Assets.xcassets */; };
@@ -44,6 +51,13 @@
 /* Begin PBXFileReference section */
 		04287BF92845A93700ADA9CF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		045BA4E6284857BB00E7C668 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
+		045BA4E8284879B400E7C668 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		045BA4EC284879E000E7C668 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		045BA4EE28487D4800E7C668 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
+		045BA4F028487D5F00E7C668 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		045BA4F228487D8400E7C668 /* OwnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnButton.swift; sourceTree = "<group>"; };
+		045BA4F72848960000E7C668 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		045BA4F92848961D00E7C668 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		045C7F1C283522BF005E46FD /* Windrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045C7F1F283522BF005E46FD /* WindriseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindriseApp.swift; sourceTree = "<group>"; };
 		045C7F21283522BF005E46FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +108,39 @@
 				045BA4E6284857BB00E7C668 /* CharacterDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		045BA4EA284879C200E7C668 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				045BA4E8284879B400E7C668 /* Home.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		045BA4EB284879CE00E7C668 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				045BA4EC284879E000E7C668 /* Profile.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		045BA4F42848957C00E7C668 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				045C7F4A283523D4005E46FD /* Api.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		045BA4F52848958600E7C668 /* Local Database */ = {
+			isa = PBXGroup;
+			children = (
+				045BA4F62848960000E7C668 /* User.xcdatamodeld */,
+				045BA4F92848961D00E7C668 /* DataController.swift */,
+			);
+			path = "Local Database";
 			sourceTree = "<group>";
 		};
 		045C7F13283522BF005E46FD = {
@@ -159,7 +206,8 @@
 		045C7F49283523B5005E46FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				045C7F4A283523D4005E46FD /* Api.swift */,
+				045BA4F52848958600E7C668 /* Local Database */,
+				045BA4F42848957C00E7C668 /* Remote */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -176,7 +224,9 @@
 			isa = PBXGroup;
 			children = (
 				045C7F21283522BF005E46FD /* ContentView.swift */,
+				045BA4EA284879C200E7C668 /* Home */,
 				045C7F5228352A78005E46FD /* Character */,
+				045BA4EB284879CE00E7C668 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +245,9 @@
 			isa = PBXGroup;
 			children = (
 				04FD8B37284256FB000D0EF0 /* MyDateFormatter.swift */,
+				045BA4EE28487D4800E7C668 /* MyColor.swift */,
+				045BA4F028487D5F00E7C668 /* FavoriteButton.swift */,
+				045BA4F228487D8400E7C668 /* OwnButton.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -330,14 +383,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD8B38284256FB000D0EF0 /* MyDateFormatter.swift in Sources */,
+				045BA4ED284879E000E7C668 /* Profile.swift in Sources */,
 				04287BFA2845A93700ADA9CF /* MainViewModel.swift in Sources */,
 				04D01A79283C735C008FA798 /* CharacterCard.swift in Sources */,
+				045BA4E9284879B400E7C668 /* Home.swift in Sources */,
 				045C7F22283522BF005E46FD /* ContentView.swift in Sources */,
+				045BA4EF28487D4800E7C668 /* MyColor.swift in Sources */,
+				045BA4FA2848961D00E7C668 /* DataController.swift in Sources */,
 				045C7F4B283523D4005E46FD /* Api.swift in Sources */,
+				045BA4F82848960000E7C668 /* User.xcdatamodeld in Sources */,
 				045C7F5128352A72005E46FD /* CharacterList.swift in Sources */,
 				045BA4E7284857BB00E7C668 /* CharacterDetailViewModel.swift in Sources */,
 				045C7F20283522BF005E46FD /* WindriseApp.swift in Sources */,
+				045BA4F128487D5F00E7C668 /* FavoriteButton.swift in Sources */,
 				045C7F5428352AAF005E46FD /* CharacterDescription.swift in Sources */,
+				045BA4F328487D8400E7C668 /* OwnButton.swift in Sources */,
 				045C7F4E2835245B005E46FD /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,6 +717,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		045BA4F62848960000E7C668 /* User.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				045BA4F72848960000E7C668 /* User.xcdatamodel */,
+			);
+			currentVersion = 045BA4F72848960000E7C668 /* User.xcdatamodel */;
+			path = User.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 045C7F14283522BF005E46FD /* Project object */;
 }

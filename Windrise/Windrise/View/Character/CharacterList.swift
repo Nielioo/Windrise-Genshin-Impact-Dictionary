@@ -14,8 +14,8 @@ struct CharacterList: View {
     private var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     var body: some View {
+        
         NavigationView {
-            
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [Color("BackgroundDarkBlue"), Color("BackgroundDarkPurple")]), startPoint: .topLeading, endPoint: .bottomLeading)
                     .ignoresSafeArea()
@@ -39,9 +39,12 @@ struct CharacterList: View {
                     }
                     .padding()
                 }
-                .navigationTitle("Character List")
                 .foregroundColor(.white)
             }
+            .navigationTitle(/*@START_MENU_TOKEN@*/"Character List"/*@END_MENU_TOKEN@*/)
+        }
+        .onAppear {
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         }
         
     }

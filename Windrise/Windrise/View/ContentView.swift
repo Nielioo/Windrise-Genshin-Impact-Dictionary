@@ -9,7 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var selection: Tab = .home
+    
+    enum Tab {
+        case home
+        case character
+        case profile
+    }
+    
     var body: some View {
+        
+        TabView(selection: $selection) {
+            Home()
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+                .tag(Tab.home)
+            
+            CharacterList()
+                .tabItem {
+                    Label("Character", systemImage: "list.bullet")
+                }
+                .tag(Tab.character)
+            
+            Profile()
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
+                .tag(Tab.profile)
+        }
+        
         NavigationView {
             NavigationLink{
                 CharacterList()
@@ -19,6 +48,7 @@ struct ContentView: View {
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
         }
+        
     }
     
     struct ContentView_Previews: PreviewProvider {
