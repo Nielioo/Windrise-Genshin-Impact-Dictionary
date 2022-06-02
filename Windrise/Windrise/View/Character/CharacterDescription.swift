@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CharacterDescription: View {
     
+    @EnvironmentObject var mainViewModel: MainViewModel
+    @StateObject var characterDetailViewModel: CharacterDetailViewModel = CharacterDetailViewModel()
+    @State var currentNameId: String
     @State var currentCharacter: Character
-    @State var currentCharacterName: String
-    @State var currentCharacterGachaSplash: Image = Image("travelerPortrait")
-    @State var currentCharacterElementIcon: Image = Image("cryoElement")
-    @State var currentCharacterTalentIcon: [String : Image] = [:]
+//    @State var currentCharacterGachaSplash: Image = Image("travelerPortrait")
+//    @State var currentCharacterElementIcon: Image = Image("cryoElement")
+//    @State var currentCharacterTalentIcon: [String : Image] = [:]
     
-    @State var currentCharacterConstellationIcon: [Image] = []
+//    @State var currentCharacterConstellationIcon: [Image] = []
     @State private var talentSelection: String = "Basic"
     @State var constellationStar: Int = 1
     
@@ -49,7 +52,7 @@ struct CharacterDescription: View {
                 ZStack(alignment: .bottomTrailing){
                     // MARK: - Gacha Splash
                     VStack(alignment: .center){
-                        currentCharacterGachaSplash
+                        characterDetailViewModel.gachaSplash
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }.ignoresSafeArea()
@@ -104,7 +107,7 @@ struct CharacterDescription: View {
                             VStack(alignment: .leading){
                                 HStack{
                                     VStack{
-                                        currentCharacterElementIcon
+                                        mainViewModel.elementsIcon[currentCharacter.visionKey.lowercased()]?
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                     }
@@ -199,15 +202,15 @@ struct CharacterDescription: View {
                                     let basic = currentCharacter.skillTalents[0]
                                     let basicSplit = basic.description.components(separatedBy: "\n")
                                     
-                                    VStack{
-                                        if(currentCharacterTalentIcon.keys.contains("na")){
-                                            currentCharacterTalentIcon["na"]!
+                                    if(characterDetailViewModel.talentIcons["na"] != nil){
+                                        VStack{
+                                            characterDetailViewModel.talentIcons["na"]?
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                         }
+                                        .frame(height: 38.0)
+                                        .padding(.top, 12)
                                     }
-                                    .frame(height: 38.0)
-                                    .padding(.top, 12)
                                     Text(basic.name)
                                         .fontWeight(.semibold)
                                         .multilineTextAlignment(.center)
@@ -229,15 +232,15 @@ struct CharacterDescription: View {
                                 case "Skill":
                                     let skill = currentCharacter.skillTalents[1]
                                     
-                                    VStack{
-                                        if(currentCharacterTalentIcon.keys.contains("skill")){
-                                            currentCharacterTalentIcon["skill"]!
+                                    if(characterDetailViewModel.talentIcons["skill"] != nil){
+                                        VStack{
+                                            characterDetailViewModel.talentIcons["skill"]?
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                         }
+                                        .frame(height: 38.0)
+                                        .padding(.top, 12)
                                     }
-                                    .frame(height: 38.0)
-                                    .padding(.top, 12)
                                     Text(skill.name)
                                         .fontWeight(.semibold)
                                         .multilineTextAlignment(.center)
@@ -249,15 +252,15 @@ struct CharacterDescription: View {
                                 case "Burst":
                                     let burst = currentCharacter.skillTalents[2]
                                     
-                                    VStack{
-                                        if(currentCharacterTalentIcon.keys.contains("burst")){
-                                            currentCharacterTalentIcon["burst"]!
+                                    if(characterDetailViewModel.talentIcons["burst"] != nil){
+                                        VStack{
+                                            characterDetailViewModel.talentIcons["burst"]?
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                         }
+                                        .frame(height: 38.0)
+                                        .padding(.top, 12)
                                     }
-                                    .frame(height: 38.0)
-                                    .padding(.top, 12)
                                     Text(burst.name)
                                         .fontWeight(.semibold)
                                         .multilineTextAlignment(.center)
@@ -301,14 +304,14 @@ struct CharacterDescription: View {
                                         let passive = currentCharacter.passiveTalents[index]
                                         
                                         HStack(alignment: .center) {
-                                            VStack{
-                                                if(currentCharacterTalentIcon.keys.contains("passive-\(index)")){
-                                                    currentCharacterTalentIcon["passive-\(index)"]!
+                                            if(characterDetailViewModel.talentIcons["passive-\(index)"] != nil){
+                                                VStack{
+                                                    characterDetailViewModel.talentIcons["passive-\(index)"]?
                                                         .resizable()
                                                         .aspectRatio(contentMode: .fit)
                                                 }
+                                                .frame(height: 38.0)
                                             }
-                                            .frame(height: 38.0)
                                             
                                             VStack(alignment: .leading){
                                                 Text(passive.name)
@@ -327,6 +330,38 @@ struct CharacterDescription: View {
                                             .padding(.bottom, 10)
                                         
                                     }
+                                    
+                                    // Sprint Passive
+                                    if(currentCharacter.skillTalents.count == 4){
+                                        let misc = currentCharacter.skillTalents[3]
+                                        
+                                        HStack(alignment: .center) {
+                                            if(characterDetailViewModel.talentIcons["passive-misc"] != nil){
+                                                VStack{
+                                                    characterDetailViewModel.talentIcons["passive-misc"]?
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                }
+                                                .frame(height: 38.0)
+                                            }
+                                            
+                                            VStack(alignment: .leading){
+                                                Text(misc.name)
+                                                    .font(.subheadline)
+                                                    .fontWeight(.bold)
+                                                    .padding(.top, 2)
+                                                Text(misc.unlock)
+                                                    .font(.caption)
+                                                    .fontWeight(.semibold)
+                                                    .padding(.bottom, 10)
+                                            }
+                                        }
+                                        
+                                        Text(misc.description)
+                                            .font(.caption)
+                                            .padding(.bottom, 10)
+                                    }
+                                    
                                 }
                             } else {
                                 Text("No Data")
@@ -367,8 +402,8 @@ struct CharacterDescription: View {
                                 VStack(alignment: .leading){
                                     HStack(alignment: .center) {
                                         VStack{
-                                            if(!currentCharacterConstellationIcon.isEmpty){
-                                                currentCharacterConstellationIcon[constellationStar-1]
+                                            if(!characterDetailViewModel.constellationIcons.isEmpty){
+                                                characterDetailViewModel.constellationIcons[constellationStar]?
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
                                             }
@@ -408,46 +443,8 @@ struct CharacterDescription: View {
                 .padding(.horizontal, 12.0)
                 .padding(.vertical, 8.0)
                 .onAppear{
-                    // MARK: - Api Settings
-                    Api().getCharacter(characterName: currentCharacterName) { character in
-                        self.currentCharacter = character
-                        
-                        Api().getCharacterElementIcon(currentCharacterVisionKey: currentCharacter.visionKey.lowercased()) { image in
-                            self.currentCharacterElementIcon = image
-                        }
-                    }
-                    
-                    // Gacha Splash
-                    Api().getCharacterGachaSplash(currentCharacterName: currentCharacterName) { image in
-                        self.currentCharacterGachaSplash = image
-                    }
-                    
-                    // Talent Icon
-                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "na") { image in
-                        self.currentCharacterTalentIcon["na"] = image
-                    }
-                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "skill") { image in
-                        self.currentCharacterTalentIcon["skill"] = image
-                    }
-                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "burst") { image in
-                        self.currentCharacterTalentIcon["burst"] = image
-                    }
-                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "passive-0") { image in
-                        self.currentCharacterTalentIcon["passive-0"] = image
-                    }
-                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "passive-1") { image in
-                        self.currentCharacterTalentIcon["passive-1"] = image
-                    }
-                    Api().getCharacterTalentIcon(currentCharacterName: currentCharacterName, index: "passive-2") { image in
-                        self.currentCharacterTalentIcon["passive-2"] = image
-                    }
-                    
-                    // constellation
-                    for i in 1..<7 {
-                        Api().getCharacterConstellationIcon(currentCharacterName: currentCharacterName, constellationNumber: i) { image in
-                            self.currentCharacterConstellationIcon.append(image)
-                        }
-                    }
+                    // MARK: - View Model Setup
+                    characterDetailViewModel.fetch(nameId: currentNameId)
                     
                     // MARK: - Segmented Picker Settings
                     UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.white
@@ -461,7 +458,10 @@ struct CharacterDescription: View {
 }
 
 struct CharacterDescription_Previews: PreviewProvider {
+    static var mainViewModel = MainViewModel()
+    
     static var previews: some View {
-        CharacterDescription(currentCharacter: Character(name:"eula"), currentCharacterName: "eula")
+        CharacterDescription(currentNameId: mainViewModel.nameId.first ?? "", currentCharacter: mainViewModel.characters.first ?? Character())
+            .environmentObject(mainViewModel)
     }
 }

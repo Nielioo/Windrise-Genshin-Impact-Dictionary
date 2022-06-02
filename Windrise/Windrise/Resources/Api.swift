@@ -39,8 +39,8 @@ class Api{
     }
     
     //MARK: - Character
-    func getCharacter(characterName: String, completion: @escaping (Character) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/characters/\(characterName)") else { return }
+    func getCharacter(nameId: String, completion: @escaping (Character) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(nameId)") else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -63,8 +63,8 @@ class Api{
     }
     
     //MARK: - Gacha Splash
-    func getCharacterGachaSplash(currentCharacterName: String, completion: @escaping (Image) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/gacha-splash") else { return }
+    func getCharacterGachaSplash(nameId: String, completion: @escaping (Image) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(nameId)/gacha-splash") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
@@ -95,8 +95,8 @@ class Api{
     }
     
     //MARK: - Character Icon
-    func getCharacterIcon(currentCharacterName: String, completion: @escaping (Image) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/icon") else { return }
+    func getCharacterIcon(nameId: String, completion: @escaping (Image) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(nameId)/icon") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
@@ -126,15 +126,15 @@ class Api{
         .resume()
     }
     
-    func getCharacterIconBig(currentCharacterName: String, completion: @escaping (Image) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/icon-big") else { return }
+    func getCharacterIconBig(nameId: String, completion: @escaping (Image) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(nameId)/icon-big") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard let data = data, error == nil else {return}
             
             if(response?.mimeType != "image/webp"){
-                self.getCharacterIcon(currentCharacterName: currentCharacterName){ image in
+                self.getCharacterIcon(nameId: nameId){ image in
                     completion(image)
                 }
             } else {
@@ -187,8 +187,8 @@ class Api{
     }
     
     //MARK: - Talent Icon
-    func getCharacterTalentIcon(currentCharacterName: String, index: String, completion: @escaping (Image) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/talent-\(index)") else { return }
+    func getCharacterTalentIcon(nameId: String, index: String, completion: @escaping (Image) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(nameId)/talent-\(index)") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
@@ -219,8 +219,8 @@ class Api{
     }
     
     //MARK: - Constellation Icon
-    func getCharacterConstellationIcon(currentCharacterName: String, constellationNumber: Int, completion: @escaping (Image) -> ()){
-        guard let url = URL(string: "\(BASE_URL)/characters/\(currentCharacterName)/constellation-\(constellationNumber)") else { return }
+    func getCharacterConstellationIcon(nameId: String, constellationNumber: Int, completion: @escaping (Image) -> ()){
+        guard let url = URL(string: "\(BASE_URL)/characters/\(nameId)/constellation-\(constellationNumber)") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             

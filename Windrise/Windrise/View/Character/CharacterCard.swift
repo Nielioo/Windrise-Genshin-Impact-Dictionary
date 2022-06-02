@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CharacterCard: View {
     
-    @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var mainViewModel: MainViewModel
+    var currentNameId: String
     var currentCharacter: Character
-    var currentCharacterName: String
     
     var body: some View {
         VStack(spacing: 0) {
@@ -19,14 +19,14 @@ struct CharacterCard: View {
                 Image("BackgroundItem\(currentCharacter.rarity.description)Star")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                characterViewModel.characterIconBig[currentCharacterName]?
+                mainViewModel.characterIconBig[currentNameId]?
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
             .aspectRatio(1, contentMode: .fit)
             .overlay (alignment: .topLeading){
                 if (!currentCharacter.vision.isEmpty){
-                    characterViewModel.elementsIcon[currentCharacter.visionKey.lowercased()]?
+                    mainViewModel.elementsIcon[currentCharacter.visionKey.lowercased()]?
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 30)
@@ -52,7 +52,7 @@ struct CharacterCard: View {
 
 struct CharacterCard_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterCard(currentCharacter: Character(name:"Kamisato Ayaka"), currentCharacterName: "ayaka")
-            .environmentObject(CharacterViewModel())
+        CharacterCard(currentNameId: "ayaka", currentCharacter: Character(name: "Kamisato Ayaka"))
+            .environmentObject(MainViewModel())
     }
 }

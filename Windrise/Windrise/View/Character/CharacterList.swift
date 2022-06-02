@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharacterList: View {
     
-    @EnvironmentObject var characterViewModel: CharacterViewModel
+    @EnvironmentObject var mainViewModel: MainViewModel
     
     private var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
@@ -22,18 +22,19 @@ struct CharacterList: View {
                 
                 ScrollView(showsIndicators: false){
                     LazyVGrid(columns: columns){
-                        ForEach(characterViewModel.characters.indices, id: \.self){ index in
+                        ForEach(mainViewModel.characters.indices, id: \.self){ index in
                             NavigationLink(
                                 destination:
                                     CharacterDescription(
-                                        currentCharacter: characterViewModel.characters[index],
-                                        currentCharacterName: characterViewModel.charactersName[index])){
-                                            CharacterCard(
-                                                currentCharacter: characterViewModel.characters[index],
-                                                currentCharacterName: characterViewModel.charactersName[index])
-                                        }
-                                        .tag(characterViewModel.characters[index].name)
-                                        .buttonStyle(PlainButtonStyle())
+                                        currentNameId: mainViewModel.nameId[index],
+                                        currentCharacter: mainViewModel.characters[index]))
+                            {
+                                CharacterCard(
+                                    currentNameId: mainViewModel.nameId[index],
+                                    currentCharacter: mainViewModel.characters[index])
+                            }
+                            .tag(mainViewModel.characters[index].name)
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                     .padding()
@@ -49,6 +50,6 @@ struct CharacterList: View {
 struct CharacterList_Previews: PreviewProvider {
     static var previews: some View {
         CharacterList()
-            .environmentObject(CharacterViewModel())
+            .environmentObject(MainViewModel())
     }
 }
