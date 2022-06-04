@@ -43,6 +43,7 @@ struct CharacterCard: View {
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity, minHeight: 30, maxHeight: 30)
+            .padding(.horizontal, 8)
             .background(.ultraThinMaterial)
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
