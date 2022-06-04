@@ -52,6 +52,7 @@ struct CharacterList: View {
 struct CharacterList_Previews: PreviewProvider {
     static var previews: some View {
         CharacterList()
+            .environment(\.managedObjectContext, DataController().container.viewContext)
             .environmentObject(MainViewModel())
     }
 }
