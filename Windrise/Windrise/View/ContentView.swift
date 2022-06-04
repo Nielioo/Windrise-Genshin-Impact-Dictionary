@@ -39,16 +39,6 @@ struct ContentView: View {
                 .tag(Tab.profile)
         }
         
-        NavigationView {
-            NavigationLink{
-                CharacterList()
-            } label: {
-                Text("Character List")
-            }
-            .navigationTitle("Home")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-        
     }
     
     struct ContentView_Previews: PreviewProvider {

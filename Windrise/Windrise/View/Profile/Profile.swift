@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct Profile: View {
+    @FetchRequest(
+        sortDescriptors: [SortDescriptor(\.nameId)],
+        predicate: NSPredicate(format: "isOwned = true"))
+    private var ownedCharacters: FetchedResults<OwnedCharacter>
+    
+    @EnvironmentObject var mainViewModel: MainViewModel
+    @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
+    
     var body: some View {
         Text("Profile!")
     }

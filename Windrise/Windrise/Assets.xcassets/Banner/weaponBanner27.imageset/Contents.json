@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "characterDummy.jpeg",
+      "filename" : "weapon_banner_2_7.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "weapon_banner_2_7@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "weapon_banner_2_7@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
