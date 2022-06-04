@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct Profile: View {
+    @Environment(\.editMode) var editMode
     @FetchRequest(
         sortDescriptors: [SortDescriptor(\.nameId)],
         predicate: NSPredicate(format: "isOwned = true"))
     private var ownedCharacters: FetchedResults<OwnedCharacter>
     
     @EnvironmentObject var mainViewModel: MainViewModel
+    @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
     
     private var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
@@ -24,7 +27,14 @@ struct Profile: View {
                 
                 ScrollView(showsIndicators: false){
                     
-                    // MARK: - Favorite Characters
+                    // MARK: - User Information
+                    VStack(alignment: .center){
+                        UserInformation(
+                            name: profileViewModel.userModel.username,
+                            profilePicture: profileViewModel.userModel.profilePicture)
+                    }
+                    
+                    // MARK: - Owned Characters
                     VStack(alignment: .leading, spacing: 10){
                         Text("Owned Characters")
                             .font(.title3)
