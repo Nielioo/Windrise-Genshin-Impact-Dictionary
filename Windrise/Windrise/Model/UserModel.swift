@@ -12,6 +12,6 @@ struct UserModel{
     var username: String
     var profilePicture: Image
     
-    static let `default` = UserModel(username: "Windrise", profilePicture: Image("DefaultProfilePicture"))
+    static let `default` = UserModel(username: "Nielio", profilePicture: Image("DefaultProfilePicture"))
     
 }
