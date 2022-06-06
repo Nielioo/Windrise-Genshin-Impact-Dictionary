@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content) -> some View {
+
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
+        }
+    }
+}
+
 struct CharacterList: View {
     
     @EnvironmentObject var mainViewModel: MainViewModel
@@ -32,17 +45,21 @@ struct CharacterList: View {
                 
                 ScrollView(showsIndicators: false){
                     
-                    TextField("Search Characters", text: $searchText)
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.white, lineWidth: 1.5)
-                        )
-                        .frame(height: 50)
-                        .padding(.horizontal)
-                        .padding(.top, 40)
-                        .disableAutocorrection(/*@START_MENU_TOKEN@*/false/*@END_MENU_TOKEN@*/)
+                    HStack(alignment: .center){
+                        TextField("", text: $searchText)
+                            .placeholder(when: searchText.isEmpty) {
+                                Text("Search Characters Here...").foregroundColor(Color(.systemGray3))
+                            }
+                            .padding(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.white, lineWidth: 1.5)
+                            )
+                            .frame(height: 50)
+                            .padding(.horizontal)
+                            .padding(.top, 40)
+                            .disableAutocorrection(false)
+                    }
                     
                     LazyVGrid(columns: columns){
                         
