@@ -86,7 +86,8 @@ struct Profile: View {
                     .padding()
                 }
             }
-            .navigationTitle("Profile")
+//            .navigationTitle("Profile")
+            .navigationBarHidden(true)
         }
         .onAppear {
             UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]

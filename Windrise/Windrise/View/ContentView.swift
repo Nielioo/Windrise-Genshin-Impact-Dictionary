@@ -14,6 +14,7 @@ struct ContentView: View {
     enum Tab {
         case home
         case character
+        case map
         case profile
     }
     
@@ -28,9 +29,15 @@ struct ContentView: View {
             
             CharacterList()
                 .tabItem {
-                    Label("Character", systemImage: "list.bullet")
+                    Label("Character", systemImage: "sparkle")
                 }
                 .tag(Tab.character)
+            
+            GenshinMap()
+                .tabItem {
+                    Label("Map", systemImage: "map.fill")
+                }
+                .tag(Tab.map)
             
             Profile()
                 .tabItem {

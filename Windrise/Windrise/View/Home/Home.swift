@@ -94,6 +94,7 @@ struct Home: View {
                     .padding()
                 }
                 .navigationTitle("Home")
+//                .navigationBarHidden(true)
             }
             
         }
