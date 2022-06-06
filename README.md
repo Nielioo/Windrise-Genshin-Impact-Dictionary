@@ -1,3 +1,3 @@
 # Windrise-Genshin-Impact-Dictionary
 
-Demo Video: https://drive.google.com/drive/folders/1tuv8Za_dXdmD5DeTe8oXFVFYvM-MQLY3
+Demo Video: https://youtu.be/ADqIqc8yLEE
