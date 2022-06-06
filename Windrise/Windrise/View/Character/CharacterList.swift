@@ -66,9 +66,7 @@ struct CharacterList: View {
                         ForEach(mainViewModel.characters.indices, id: \.self){ index in
                             
                             if(!searchResults.isEmpty){
-                                
                                 ForEach(searchResults){ filteredCharacter in
-                                    
                                     if(mainViewModel.characters[index].name.lowercased()
                                         .contains(filteredCharacter.name.lowercased())){
                                         NavigationLink(
@@ -84,27 +82,32 @@ struct CharacterList: View {
                                         .tag(mainViewModel.characters[index].name)
                                         .buttonStyle(PlainButtonStyle())
                                     }
-                                    
                                 }
-                                
-                            } else {
-                                NavigationLink(
-                                    destination:
-                                        CharacterDescription(
-                                            currentNameId: mainViewModel.nameId[index],
-                                            currentCharacter: mainViewModel.characters[index]))
-                                {
-                                    CharacterCard(
-                                        currentNameId: mainViewModel.nameId[index],
-                                        currentCharacter: mainViewModel.characters[index])
-                                }
-                                .tag(mainViewModel.characters[index].name)
-                                .buttonStyle(PlainButtonStyle())
                             }
                             
                         }
                     }
                     .padding()
+                    
+                    if(searchResults.isEmpty){
+                        VStack{
+                            Image(systemName: "exclamationmark.triangle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(Color.gray)
+                                .frame(maxWidth: .infinity, maxHeight: 75, alignment: .center)
+                                .padding(.top, 40)
+                                .padding(.bottom, 4)
+                            Text("Ooops! There is no character named \(searchText) currently...")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color.gray)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.top)
+                                .padding(.horizontal, 20)
+                        }
+                    }
+                    
                 }
                 .foregroundColor(.white)
             }
