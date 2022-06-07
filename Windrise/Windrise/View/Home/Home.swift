@@ -24,7 +24,20 @@ struct Home: View {
                 MyColor.mainBackground.ignoresSafeArea()
                 
                 ScrollView (showsIndicators: false){
-                    VStack{
+                    VStack(alignment: .leading){
+                        
+                        HStack(alignment: .lastTextBaseline){
+                            Image(systemName: "house.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.white)
+                                .frame(maxHeight: 20)
+                            Text("Home")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                        }
+                        
                         // MARK: - Current Banner
                         VStack(alignment: .leading){
                             Text("Current Banners")
@@ -93,14 +106,14 @@ struct Home: View {
                     }
                     .padding()
                 }
-                .navigationTitle("Home")
-//                .navigationBarHidden(true)
+//                .navigationTitle("Home")
+                .navigationBarHidden(true)
             }
             
         }
-        .onAppear {
-            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        }
+//        .onAppear {
+//            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+//        }
     }
 }
 
