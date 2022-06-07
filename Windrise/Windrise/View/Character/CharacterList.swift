@@ -26,14 +26,44 @@ struct CharacterList: View {
     
     private var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
+    @State private var elementFilter: ElementCategory = .all
+    enum ElementCategory: String, CaseIterable, Identifiable {
+        case all = "All"
+        case pyro = "Pyro"
+        case hydro = "Hydro"
+        case anemo = "Anemo"
+        case electro = "Electro"
+        case dendro = "Dendro"
+        case cryo = "Geo"
+        
+        var id: Self { self }
+    }
+    
+    @State private var weaponFilter: WeaponCategory = .all
+    enum WeaponCategory: String, CaseIterable, Identifiable {
+        case all = "All"
+        case sword = "Sword"
+        case claymore = "Claymore"
+        case polearm = "Polearm"
+        case bow = "Bow"
+        case catalyst = "Catalyst"
+        
+        var id: Self { self }
+    }
+    
     @State private var searchText = ""
-    var searchResults: [Character] {
+    var filterResults: [Character] {
         if(searchText.isEmpty){
-            return mainViewModel.characters
-        }else{
-            return mainViewModel.characters.filter{
+            return mainViewModel.characters.filter{(
+                (elementFilter == .all || $0.visionKey.lowercased() == elementFilter.rawValue.lowercased())
+                && (weaponFilter == .all || $0.weaponType.lowercased() == weaponFilter.rawValue.lowercased())
+            )}
+        } else {
+            return mainViewModel.characters.filter{(
                 $0.name.lowercased().contains(searchText.lowercased())
-            }
+                && (elementFilter == .all || $0.visionKey.lowercased() == elementFilter.rawValue.lowercased())
+                && (weaponFilter == .all || $0.weaponType.lowercased() == weaponFilter.rawValue.lowercased())
+            )}
         }
     }
     
@@ -45,7 +75,7 @@ struct CharacterList: View {
                 
                 ScrollView(showsIndicators: false){
                     
-                    HStack(alignment: .center){
+                    HStack(alignment: .center, spacing: 12){
                         TextField("", text: $searchText)
                             .placeholder(when: searchText.isEmpty) {
                                 Text("Search Characters Here...").foregroundColor(Color(.systemGray3))
@@ -56,17 +86,18 @@ struct CharacterList: View {
                                     .stroke(.white, lineWidth: 1.5)
                             )
                             .frame(height: 50)
-                            .padding(.horizontal)
-                            .padding(.top, 40)
                             .disableAutocorrection(false)
+                        
                     }
+                    .padding(.top, 10)
+                    .padding(.horizontal)
                     
                     LazyVGrid(columns: columns){
                         
                         ForEach(mainViewModel.characters.indices, id: \.self){ index in
                             
-                            if(!searchResults.isEmpty){
-                                ForEach(searchResults){ filteredCharacter in
+                            if(!filterResults.isEmpty){
+                                ForEach(filterResults){ filteredCharacter in
                                     if(mainViewModel.characters[index].name.lowercased()
                                         .contains(filteredCharacter.name.lowercased())){
                                         NavigationLink(
@@ -88,8 +119,29 @@ struct CharacterList: View {
                         }
                     }
                     .padding()
+                    .toolbar {
+                        ToolbarItem {
+                            Menu {
+                                Picker("Element", selection: $elementFilter) {
+                                    ForEach(ElementCategory.allCases) { element in
+                                        Text(element.rawValue)
+                                            .tag(element)
+                                    }
+                                }
+                                Picker("Weapon", selection: $weaponFilter) {
+                                    ForEach(WeaponCategory.allCases) { weapon in
+                                        Text(weapon.rawValue)
+                                            .tag(weapon)
+                                    }
+                                }
+                            } label: {
+                                Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    }
                     
-                    if(searchResults.isEmpty){
+                    if(filterResults.isEmpty){
                         VStack{
                             Image(systemName: "exclamationmark.triangle")
                                 .resizable()
@@ -111,11 +163,22 @@ struct CharacterList: View {
                 }
                 .foregroundColor(.white)
             }
-//            .navigationTitle(/*@START_MENU_TOKEN@*/"Character List"/*@END_MENU_TOKEN@*/)
-            .navigationBarHidden(true)
+            .navigationTitle(/*@START_MENU_TOKEN@*/"Character List"/*@END_MENU_TOKEN@*/)
+            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarHidden(true)
         }
         .onAppear {
-            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+//            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithOpaqueBackground()
+            navigationBarAppearance.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor : UIColor.white
+            ]
+            navigationBarAppearance.backgroundColor = MyColor.transparentBlack
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+//            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         }
         
     }
